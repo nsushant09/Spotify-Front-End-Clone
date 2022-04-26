@@ -1,10 +1,16 @@
 package com.neupanesushant.spotifyfrontendclone.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.view.animation.Animation
+import androidx.core.text.bold
 import com.neupanesushant.spotifyfrontendclone.R
 import com.neupanesushant.spotifyfrontendclone.databinding.FragmentPremiumBinding
 
@@ -20,6 +26,44 @@ class PremiumFragment : Fragment() {
     ): View? {
         _binding = FragmentPremiumBinding.inflate(layoutInflater)
         return binding.root
+
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val tvPremiumImageFreeContentString = "Get 3 months of Premium for free"
+        binding.tvPremiumImageFreeContent.text = tvPremiumImageFreeContentString
+
+        setupBtnGetFree()
+        termsAndConditionDescription()
+
+    }
+
+    fun setupBtnGetFree(){
+        val btnGetFreeText = "Get 3 months free"
+        binding.btnGetFree.apply{
+            text = btnGetFreeText
+            isAllCaps = true
+            setOnClickListener{
+                val intent : Intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.spotify.com/"))
+                startActivity(intent)
+            }
+        }
+
+    }
+    fun termsAndConditionDescription(){
+        val firstString = "Individual plan only. USD 2.99/month after. "
+        val mainString = "Terms and conditions apply. "
+        val secondString = "Open only to users who haven't already tried Premium. Offer ends 5/12/22."
+        val str = SpannableStringBuilder()
+            .append(firstString)
+            .bold { append(mainString) }
+            .append(secondString)
+
+        binding.tvTerms.text = str
+
+    }
+
 
 }

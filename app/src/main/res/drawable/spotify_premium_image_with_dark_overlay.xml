@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/spotify_premium_image"/>
+    <item android:drawable="@drawable/dark_image_overlay"/>
+
+</selector>
