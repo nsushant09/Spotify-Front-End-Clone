@@ -8,4 +8,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="terms_and_conditions_apply">Terms and conditions apply.</string>
     <string name="limited_time_offer">Limited Time Offer</string>
+    <string name="why_join_premium">Why join Premium?</string>
+    <string name="current_plan">Current Plan</string>
 </resources>

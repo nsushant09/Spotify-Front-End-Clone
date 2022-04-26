@@ -11,8 +11,11 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.animation.Animation
 import androidx.core.text.bold
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.neupanesushant.spotifyfrontendclone.R
+import com.neupanesushant.spotifyfrontendclone.adapters.WhyPremiumAdapter
 import com.neupanesushant.spotifyfrontendclone.databinding.FragmentPremiumBinding
+import com.neupanesushant.spotifyfrontendclone.databinding.WhyPremiumRvCardBinding
 
 
 class PremiumFragment : Fragment() {
@@ -37,6 +40,10 @@ class PremiumFragment : Fragment() {
 
         setupBtnGetFree()
         termsAndConditionDescription()
+
+        binding.rvWhyPremiumList.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL, false)
+        val whyPremiumAdapter = WhyPremiumAdapter(requireContext(), whyPremiumDescriptionArrayList())
+        binding.rvWhyPremiumList.adapter = whyPremiumAdapter
 
     }
 
@@ -63,6 +70,17 @@ class PremiumFragment : Fragment() {
 
         binding.tvTerms.text = str
 
+    }
+    fun whyPremiumDescriptionArrayList() : ArrayList<String> {
+        val arrayList = arrayListOf<String>()
+        arrayList.apply {
+            add("Download to listen offline without wifi")
+            add("Music without ad interruptions")
+            add("2x higher sound quiality than our free plan")
+            add("Play songs in any order, with unlimited skips")
+            add("Cancel monthly plans online anytime")
+        }
+        return arrayList
     }
 
 

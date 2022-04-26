@@ -14,4 +14,5 @@
     <color name = "transparent_grey">#33f6feff</color>
     <color name = "blue">#4295f5</color>
     <color name="brown">#282828</color>
+    <color name = "grey">#adadad</color>
 </resources>
