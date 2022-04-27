@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/bottom_navigation_background.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/bottom_navigation_item_text_appearance.xml" value="0.285" />
+        <entry key="app/src/main/res/drawable/card_background_gradient_green.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/dark_image_overlay.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/default_card_background.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.285" />

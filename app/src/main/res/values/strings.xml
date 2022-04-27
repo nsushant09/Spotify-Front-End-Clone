@@ -10,4 +10,10 @@
     <string name="limited_time_offer">Limited Time Offer</string>
     <string name="why_join_premium">Why join Premium?</string>
     <string name="current_plan">Current Plan</string>
+    <string name="pick_your_premium">Pick your Premium</string>
+    <string name="for_3_months">For 3 months</string>
+    <string name="free">Free</string>
+    <string name="premium_individual">Premium Individual</string>
+    <string name="premium_card_maketing_description">Ad-free music listening • Download to listen offline • Unlimited skips • On-demand playback • Cancel anytime</string>
+    <string name="spotify_free">Spotify Free</string>
 </resources>

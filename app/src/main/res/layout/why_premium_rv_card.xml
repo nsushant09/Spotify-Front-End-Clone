@@ -21,7 +21,8 @@
         android:layout_gravity="center"
         android:fontFamily="@font/source_sans"
         android:layout_marginStart="20dp"
-        android:textSize="15sp"
+        android:textSize="14sp"
+        android:letterSpacing="-0.02"
         android:textColor="@color/white"
         />
 
