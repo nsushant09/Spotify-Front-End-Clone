@@ -27,7 +27,7 @@ class LibraryFragment : Fragment() {
     private var _binding: FragmentLibraryBinding? = null
     private val binding get() = _binding!!
 
-    private var isList : Boolean = false
+    private var isList : Boolean = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -87,7 +87,7 @@ class LibraryFragment : Fragment() {
     }
 
     fun setupOneElementRecyclerView(){
-        val adapter = LibraryContentAdapter(true, listOfLibraryContent())
+        val adapter = LibraryContentAdapter(!isList, listOfLibraryContent())
         binding.rvLibraryContents.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvLibraryContents.adapter = adapter
 
@@ -96,11 +96,11 @@ class LibraryFragment : Fragment() {
     }
 
     fun setupTwoElementRecyclerView(){
-        val adapter = LibraryContentAdapter(true, listOfLibraryContent())
+        val adapter = LibraryContentAdapter(!isList, listOfLibraryContent())
         binding.rvLibraryContents.layoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
         binding.rvLibraryContents.adapter = adapter
         isList = false
-       binding.ivChangeListView.setImageResource(R.drawable.ic_bullet_list)
+        binding.ivChangeListView.setImageResource(R.drawable.ic_bullet_list)
     }
 
     fun listOfLibraryContent(): ArrayList<DataLibraryContent> {
@@ -108,7 +108,7 @@ class LibraryFragment : Fragment() {
         list.add(
             DataLibraryContent(
                 "https://images.pexels.com/photos/9821104/pexels-photo-9821104.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-                "Song",
+                "Dhoti ko geet",
                 false,
                 arrayOf("Sushant Neupane")
             )

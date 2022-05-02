@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp"
+    android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvLibraryContentImageCard"
+        android:layout_width="80dp"
+        android:layout_gravity="center"
+        android:layout_height="80dp">
+
+        <ImageView
+            android:id="@+id/ivLibraryContentImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/LibraryImageDescription" />
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="2dp"
+        >
+
+        <TextView
+            android:id="@+id/tvContentTitle"
+            style="@style/SmallTextWithSourceSans"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Dhoti ko geet"
+            android:letterSpacing="0"
+            android:textColor="@color/white"
+            android:paddingVertical="2dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvContentDesc"
+            style="@style/SmallTextWithSourceSans"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PlayList . Sushant Neupane"
+            android:letterSpacing="0"
+            android:textSize="12sp"
+            android:textColor="@color/grey" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
