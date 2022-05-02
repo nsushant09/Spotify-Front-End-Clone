@@ -24,7 +24,7 @@ import com.neupanesushant.spotifyfrontendclone.fragments.PremiumFragment
 import com.neupanesushant.spotifyfrontendclone.fragments.SearchFragment
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private val homeFragment = HomeFragment();
     private val libraryFragment = LibraryFragment();
     private val premiumFragment = PremiumFragment();
@@ -36,23 +36,23 @@ class MainActivity : AppCompatActivity() {
 
         loadDefaultFragment()
 
-        val navigationBarView : NavigationBarView = findViewById(R.id.bottom_navigation)
+        val navigationBarView: NavigationBarView = findViewById(R.id.bottom_navigation)
         currentFragmentListener(navigationBarView)
 
 
     }
 
-    fun replaceFragment(fragment : Fragment){
-        if(fragment != null){
+    fun replaceFragment(fragment: Fragment) {
+        if (fragment != null) {
             val fragmentTransaction = supportFragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fragment_container, fragment)
             fragmentTransaction.commit()
         }
     }
 
-    fun currentFragmentListener(navigationBarView: NavigationBarView){
+    fun currentFragmentListener(navigationBarView: NavigationBarView) {
         navigationBarView.setOnItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.home -> {
                     replaceFragment(homeFragment)
                     showTransparentStatusBar()
@@ -75,16 +75,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun loadDefaultFragment(){
+    fun loadDefaultFragment() {
         replaceFragment(homeFragment)
         showTransparentStatusBar()
     }
-    fun showTransparentStatusBar(){
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+
+    fun showTransparentStatusBar() {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
     }
 
-    fun removeTransparentStatusBar(){
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN, WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN)
+    fun removeTransparentStatusBar() {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
+            WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
+        )
         window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 

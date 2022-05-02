@@ -10,7 +10,7 @@ import com.neupanesushant.spotifyfrontendclone.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
 
-    private var _binding : FragmentSearchBinding ?= null
+    private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(

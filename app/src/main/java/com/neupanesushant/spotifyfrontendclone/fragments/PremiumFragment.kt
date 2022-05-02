@@ -31,7 +31,7 @@ import java.net.URI
 
 class PremiumFragment : Fragment() {
 
-    private var _binding : FragmentPremiumBinding ?= null
+    private var _binding: FragmentPremiumBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -53,8 +53,10 @@ class PremiumFragment : Fragment() {
         setupBtnGetFree(binding.btnGetFree)
         bindingTermsAndConditionToTextView(binding.tvTerms, termsAndConditionDescription())
 
-        binding.rvWhyPremiumList.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL, false)
-        val whyPremiumAdapter = WhyPremiumAdapter(requireContext(), whyPremiumDescriptionArrayList())
+        binding.rvWhyPremiumList.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        val whyPremiumAdapter =
+            WhyPremiumAdapter(requireContext(), whyPremiumDescriptionArrayList())
         binding.rvWhyPremiumList.adapter = whyPremiumAdapter
 
         setupBtnGetFree(binding.btnGetFree2)
@@ -63,31 +65,37 @@ class PremiumFragment : Fragment() {
 
     }
 
-    fun setupBtnGetFree(button : Button){
+    fun setupBtnGetFree(button: Button) {
         val btnGetFreeText = "Get 3 months free"
-        button.apply{
+        button.apply {
             text = btnGetFreeText
             isAllCaps = true
-            setOnClickListener{
-                val intent : Intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.spotify.com/"))
+            setOnClickListener {
+                val intent: Intent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse("https://www.spotify.com/"))
                 startActivity(intent)
             }
         }
 
     }
-    fun termsAndConditionDescription() : SpannableStringBuilder{
+
+    fun termsAndConditionDescription(): SpannableStringBuilder {
         val firstString = "Individual plan only. USD 2.99/month after. "
         val mainString = "Terms and conditions apply. "
-        val secondString = "Open only to users who haven't already tried Premium. Offer ends 5/12/22."
+        val secondString =
+            "Open only to users who haven't already tried Premium. Offer ends 5/12/22."
         val str = SpannableStringBuilder()
             .append(firstString)
             .bold { append(mainString) }
             .append(secondString)
 
-        val clickableSpan = object :ClickableSpan(){
+        val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
                 Toast.makeText(context, "Redirecting...", Toast.LENGTH_SHORT).show()
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.spotify.com/us/legal/end-user-agreement/"))
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://www.spotify.com/us/legal/end-user-agreement/")
+                )
                 startActivity(intent)
             }
 
@@ -100,12 +108,13 @@ class PremiumFragment : Fragment() {
         str.setSpan(clickableSpan, 43, 71, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         return str
     }
-    fun bindingTermsAndConditionToTextView(textview : TextView, str : SpannableStringBuilder){
+
+    fun bindingTermsAndConditionToTextView(textview: TextView, str: SpannableStringBuilder) {
         textview.movementMethod = LinkMovementMethod()
         textview.text = str
     }
 
-    fun whyPremiumDescriptionArrayList() : ArrayList<String> {
+    fun whyPremiumDescriptionArrayList(): ArrayList<String> {
         val arrayList = arrayListOf<String>()
         arrayList.apply {
             add("Download to listen offline without wifi")
@@ -117,8 +126,8 @@ class PremiumFragment : Fragment() {
         return arrayList
     }
 
-    fun setCurrentPlan(str : String){
-        binding.tvCurrentPlan.text  = str
+    fun setCurrentPlan(str: String) {
+        binding.tvCurrentPlan.text = str
     }
 
 

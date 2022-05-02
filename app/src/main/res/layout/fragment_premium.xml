@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.PremiumFragment"
     android:background="@color/primary"
-    >
+    tools:context=".fragments.PremiumFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
 
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -32,10 +29,10 @@
                 android:id="@+id/appBarPremium"
                 android:layout_width="match_parent"
                 android:layout_height="385dp"
+                android:background="@color/transparent_primary"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:background="@color/transparent_primary">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -44,9 +41,9 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/spotify_premium_image"
+                        android:foreground="@drawable/dark_image_overlay"
                         android:scaleType="centerCrop"
-                        android:foreground="@drawable/dark_image_overlay"/>
+                        android:src="@drawable/spotify_premium_image" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -104,9 +101,9 @@
                                 android:layout_gravity="center"
                                 android:layout_marginStart="3dp"
                                 android:fontFamily="@font/gothammedium"
+                                android:letterSpacing="-0.05"
                                 android:text="@string/limited_time_offer"
                                 android:textAllCaps="true"
-                                android:letterSpacing="-0.05"
                                 android:textColor="@color/white"
                                 android:textSize="11sp" />
 
@@ -132,99 +129,92 @@
 
             <Button
                 android:id="@+id/btnGetFree"
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/premium_button_background"
                 android:layout_marginHorizontal="16dp"
-                android:textColor="@color/primary"
-                android:textSize="14sp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/premium_button_background"
                 android:fontFamily="@font/gothammedium"
                 android:letterSpacing="-0.03"
+                android:textColor="@color/primary"
+                android:textSize="14sp"
 
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/appBarPremium"
-                />
+                app:layout_constraintTop_toBottomOf="@id/appBarPremium" />
+
+            <TextView
+                android:id="@+id/tvTerms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnGetFree" />
+
+            <LinearLayout
+                android:id="@+id/linearlayoutWhyPremiumCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/default_card_background"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:paddingBottom="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTerms">
 
                 <TextView
-                    android:id="@+id/tvTerms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
-                    android:layout_marginVertical="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/gotham_bold"
+                    android:text="@string/why_join_premium"
                     android:textColor="@color/white"
-                    app:layout_constraintTop_toBottomOf="@id/btnGetFree"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                 />
+                    android:textSize="20sp" />
 
-                <LinearLayout
-                    android:id="@+id/linearlayoutWhyPremiumCard"
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:background="@drawable/default_card_background"
-                    app:layout_constraintTop_toBottomOf="@id/tvTerms"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:paddingBottom="20dp"
-                    >
+                    android:layout_height="2dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/transparent_grey" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham_bold"
-                        android:textSize="20sp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="10dp"
-                        android:textColor="@color/white"
-                        android:text="@string/why_join_premium"
-                        />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvWhyPremiumList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="@color/transparent_grey"
-                        android:layout_marginVertical="10dp"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvWhyPremiumList"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        />
-
-                </LinearLayout>
+            </LinearLayout>
 
 
             <RelativeLayout
                 android:id="@+id/relativelayoutCurrentPlanCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linearlayoutWhyPremiumCard"
-                android:orientation="horizontal"
-                android:paddingVertical="30dp"
-                android:paddingHorizontal="30dp"
                 android:layout_marginHorizontal="16dp"
-                android:background="@drawable/default_card_background"
                 android:layout_marginTop="40dp"
-                >
+                android:background="@drawable/default_card_background"
+                android:orientation="horizontal"
+                android:paddingHorizontal="30dp"
+                android:paddingVertical="30dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearlayoutWhyPremiumCard">
 
                 <TextView
                     android:id="@+id/tvCurrentPlan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/gotham_bold"
-                    android:textSize="16sp"
-                    android:text="@string/spotify_free"
-                    android:layout_gravity="center_vertical"
                     android:layout_alignParentStart="true"
-                    />
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/gotham_bold"
+                    android:text="@string/spotify_free"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -245,34 +235,33 @@
                 android:id="@+id/tvPickPremium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:layout_marginTop="40dp"
-                android:text="@string/pick_your_premium"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
                 android:fontFamily="@font/nunito_extra_bold"
+                android:text="@string/pick_your_premium"
+                android:textColor="@color/white"
                 android:textSize="18sp"
 
 
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/relativelayoutCurrentPlanCard"
-                />
+                app:layout_constraintTop_toBottomOf="@id/relativelayoutCurrentPlanCard" />
 
 
             <LinearLayout
                 android:id="@+id/linearlayoutPickPremiumCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="32dp"
-                android:paddingTop="32dp"
-                android:paddingBottom="8dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/card_background_gradient_green"
                 android:orientation="vertical"
+                android:paddingHorizontal="32dp"
 
+                android:paddingTop="32dp"
+                android:paddingBottom="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvPickPremium"
-                android:layout_marginTop="40dp"
-                android:layout_marginHorizontal="16dp"
 
                 >
 
@@ -283,36 +272,33 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:fontFamily="@font/source_sans_semibold"
                         android:text="@string/premium_individual"
                         android:textColor="@color/white"
-                        android:fontFamily="@font/source_sans_semibold"
-                        android:textSize="16sp"
-                        android:layout_alignParentBottom="true"
-                        />
+                        android:textSize="16sp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_alignParentEnd="true">
+                        android:layout_alignParentEnd="true"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/free"
                             android:layout_gravity="end"
-                            android:textSize="18sp"
                             android:fontFamily="@font/gotham_black"
-                            />
+                            android:text="@string/free"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/for_3_months"
                             android:fontFamily="@font/gotham_bold"
+                            android:text="@string/for_3_months"
                             android:textColor="@color/lightwhite"
-                            android:textSize="12sp"
-                            />
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -324,43 +310,40 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:fontFamily="@font/source_sans_semibold"
-                    android:textSize="16sp"
-                    android:paddingHorizontal="8dp"
                     android:gravity="center"
-                    android:text="@string/premium_card_maketing_description"/>
+                    android:paddingHorizontal="8dp"
+                    android:text="@string/premium_card_maketing_description"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/btnGetFree2"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@drawable/premium_button_background"
                     android:layout_marginHorizontal="64dp"
-                    android:textColor="@color/primary"
-                    android:textSize="14sp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/premium_button_background"
                     android:fontFamily="@font/gothammedium"
                     android:letterSpacing="-0.03"
-                    />
+                    android:textColor="@color/primary"
+                    android:textSize="14sp" />
 
 
                 <TextView
                     android:id="@+id/tvTerms2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10sp"
-                    android:padding="8dp"
                     android:layout_marginVertical="10dp"
                     android:gravity="center"
+                    android:padding="8dp"
                     android:textColor="@color/lightwhite"
-                    tools:ignore="SmallSp"
-                    />
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
 
 
             </LinearLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
     </androidx.core.widget.NestedScrollView>

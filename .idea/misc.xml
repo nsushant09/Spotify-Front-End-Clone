@@ -6,6 +6,8 @@
         <entry key="app/src/main/res/drawable/bottom_navigation_background.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/bottom_navigation_item_text_appearance.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/card_background_gradient_green.xml" value="0.285" />
+        <entry key="app/src/main/res/drawable/circular_image_view.xml" value="0.285" />
+        <entry key="app/src/main/res/drawable/circular_image_view_layerlist.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/dark_image_overlay.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/default_card_background.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.285" />
@@ -29,6 +31,8 @@
         <entry key="app/src/main/res/layout/fragment_library.xml" value="0.3890625" />
         <entry key="app/src/main/res/layout/fragment_premium.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.3494791666666667" />
+        <entry key="app/src/main/res/layout/library_one_element_rv_card.xml" value="0.3494791666666667" />
+        <entry key="app/src/main/res/layout/library_two_element_rv_card.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/why_premium_rv_card.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.4036458333333333" />
       </map>

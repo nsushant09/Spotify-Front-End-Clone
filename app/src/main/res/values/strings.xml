@@ -16,4 +16,6 @@
     <string name="premium_individual">Premium Individual</string>
     <string name="premium_card_maketing_description">Ad-free music listening • Download to listen offline • Unlimited skips • On-demand playback • Cancel anytime</string>
     <string name="spotify_free">Spotify Free</string>
+    <string name="search_profile_image">Search Profile Image</string>
+    <string name="LibraryImageDescription">Library Playlist and Podcast Content\'s Image</string>
 </resources>
