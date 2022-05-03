@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.LibraryFragment">
+    tools:context=".fragments.LibraryFragment"
+    android:paddingBottom="75dp"
+    >
 
     <!-- Library Header -->
 
@@ -123,13 +125,14 @@
                         app:tint="@color/white" />
 
                     <TextView
+                        android:id="@+id/tvSortText"
                         style="@style/SmallTextWithSourceSans"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toEndOf="@id/ivSortImage"
-                        android:textSize="14sp"
-                        android:text="Recently played" />
+                        android:text="Recently played"
+                        android:textSize="14sp" />
 
                 </RelativeLayout>
 

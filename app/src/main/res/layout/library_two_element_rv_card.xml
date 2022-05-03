@@ -24,12 +24,12 @@
     <TextView
         android:id="@+id/tvContentTitle"
         android:layout_width="match_parent"
-        style="@style/SmallTextWithSourceSans"
         android:layout_height="18dp"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:text="Dhoti ko geet"
+        android:fontFamily="@font/source_sans"
         android:textColor="@color/white"
         android:textSize="14sp" />
 
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="16dp"
         android:text="PlayList . Sushant Neupane"
-        android:textSize="11sp"
+        android:textSize="12sp"
         android:textColor="@color/grey" />
 
 

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/brown"
+    android:paddingHorizontal="32dp"
+    android:paddingBottom="50dp"
+    >
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/grey"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sort_by"
+        android:textColor="@color/white"
+        style="@style/HeaderTextWithSourceSansSemiBold"
+        android:layout_marginVertical="16dp"/>
+
+    <RelativeLayout
+        android:id="@+id/rlMostRecent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:layout_marginTop="16dp"
+        >
+
+        <TextView
+            android:id="@+id/tvMostRecent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/most_recent"
+            style="@style/MediumTextWithSourceSansSemiBold"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:id="@+id/ivMostRecent"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_check"
+            app:tint="@color/secondary"
+            android:visibility="invisible"
+            android:contentDescription="@string/check_marks_for_selected_one"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlRecentlyPlayed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        >
+
+        <TextView
+            android:id="@+id/tvRecentlyPlayed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/recently_played"
+            style="@style/MediumTextWithSourceSansSemiBold"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:id="@+id/ivRecentlyPlayed"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_check"
+            app:tint="@color/secondary"
+            android:visibility="invisible"
+            android:contentDescription="@string/check_marks_for_selected_one"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rlRecentlyAdded"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        >
+
+        <TextView
+            android:id="@+id/tvRecentlyAdded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/recently_added"
+            style="@style/MediumTextWithSourceSansSemiBold"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:id="@+id/ivRecentlyAdded"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_check"
+            app:tint="@color/secondary"
+            android:visibility="invisible"
+            android:contentDescription="@string/check_marks_for_selected_one"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlAlphabetical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        >
+
+        <TextView
+            android:id="@+id/tvAlphabetical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/alphabetical"
+            style="@style/MediumTextWithSourceSansSemiBold"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:id="@+id/ivAlphabetical"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_check"
+            app:tint="@color/secondary"
+            android:visibility="invisible"
+            android:contentDescription="@string/check_marks_for_selected_one"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlCreator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        >
+
+        <TextView
+            android:id="@+id/tvCreator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/creator"
+            style="@style/MediumTextWithSourceSansSemiBold"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:id="@+id/ivCreator"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_check"
+            app:tint="@color/secondary"
+            android:visibility="invisible"
+            android:contentDescription="@string/check_marks_for_selected_one"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvCancle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancle"
+        android:textAllCaps="true"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/gotham_bold"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:layout_gravity="center"
+        />
+</LinearLayout>
