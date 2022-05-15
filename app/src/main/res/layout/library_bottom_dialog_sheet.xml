@@ -35,13 +35,12 @@
 
         <TextView
             android:id="@+id/tvMostRecent"
+            style="@style/MediumTextWithSourceSansSemiBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:text="@string/most_recent"
-            style="@style/MediumTextWithSourceSansSemiBold"
             android:layout_centerVertical="true"
-            />
+            android:text="@string/most_recent" />
 
         <ImageView
             android:id="@+id/ivMostRecent"

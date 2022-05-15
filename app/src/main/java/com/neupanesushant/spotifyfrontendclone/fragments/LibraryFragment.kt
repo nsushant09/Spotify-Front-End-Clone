@@ -1,27 +1,18 @@
 package com.neupanesushant.spotifyfrontendclone.fragments
 
-import android.annotation.SuppressLint
-import android.graphics.Color
-import android.graphics.drawable.Drawable
-import android.media.Image
+
 import android.os.Bundle
-import android.provider.ContactsContract
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.graphics.drawable.DrawableCompat
-import androidx.core.graphics.toColor
+
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.neupanesushant.spotifyfrontendclone.R
+import com.neupanesushant.spotifyfrontendclone.*
 import com.neupanesushant.spotifyfrontendclone.adapters.LibraryContentAdapter
 import com.neupanesushant.spotifyfrontendclone.data.DataLibraryContent
 import com.neupanesushant.spotifyfrontendclone.databinding.FragmentLibraryBinding
@@ -39,6 +30,8 @@ class LibraryFragment : Fragment() {
     private lateinit var bottomDialogSheet : BottomSheetDialog
     private val dataLibraryContentList = ArrayList<DataLibraryContent>()
 
+    lateinit var currentSortingLayout : LibrarySortSetting
+    lateinit var previousSortingLayout : LibrarySortSetting
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,6 +49,7 @@ class LibraryFragment : Fragment() {
         setHeaderProfileImage("https://lh3.googleusercontent.com/UrNljYq0p0PAZovQLACI6N4ExZ68Vp52OgVo1XpHsjl1fqFrAnliSgxWoKQDnB0w60cbH39HS0x2oLTTPAr7WNc80NT2P1NIAqS1v_KVo4svCs0jpc74RakjJbV8oX35lY0dUzxn4qYZ7sJIeU7rRBeNHNctrXpgSoF2RbG-aZ1BiPl95Nvdis1221svrOXjk_n-fK7plebUNjggr6W7j9bhc-JgOMuhaTyasnSeye7sr8oDxxbv_9WHFCWvGE7Go6ZUrakt5dr9RGoVd-h4xdEVcKVYIX1Q6QfPcvkyiwTWSUjbtdEZbcC7QJbDryzjScGsfmACcZTdtK8Bzw8PB8MOKtBVuTfi1x0i7Klixjxqot6yeME5yeBtHtvEulK0XY62RIfONlvo-mbH99Xi_DG_XXTB5Mbb-D6fLqD7KeCPvQGgIwFkC1vxZ-76UCuZxdT_FZ3kXTZniA__D9JQWu2rzhpIv7kGn4xUF71JHwpG8VmA8pQ-h4_E0os3W3GnaNWsIO4n2CGGUGOqrsl3Do1a1ME10ShXrTFJxIbYtbbBIpuRBO2g56ZUIntNqPZLXapUCwiKtb54EWPSnaw0IOSz5PtWMhgS6v7lEZIvQSuUB8JabBdV0rOEwLBzTc0QrQ8vaGBiiDMSBagqoRuo_4ih4NeCyrn7LMJfDNKgmKkNQpJsoVHamjfSxj-34F7ZLbH4W92mwqOYPFLyRM3-usXHEb7E1lW4_btRiIbms2vsNT1LbsvcuUA=w165-h220-no?authuser=0")
         changeListViewListener()
         sortingOrderClickListener()
+        setFromShowBottomDialogSheet()
     }
 
     fun setHeaderProfileImage(uri: String) {
@@ -127,14 +121,46 @@ class LibraryFragment : Fragment() {
         bottomDialogSheet.setContentView(bottomSheetBinding.root)
 
         bottomSheetBinding.rlMostRecent.setOnClickListener{
-            bottomSheetBinding.tvMostRecent.setTextColor(resources.getColor(R.color.secondary))
-            bottomSheetBinding.ivMostRecent.visibility = View.VISIBLE
-            binding.tvSortText.setText(R.string.most_recent)
+            currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlMostRecent, bottomSheetBinding.tvMostRecent, bottomSheetBinding.ivMostRecent, "Most Recent")
+            setFromShowBottomDialogSheet()
+            previousSortingLayout = currentSortingLayout
+        }
+        bottomSheetBinding.rlAlphabetical.setOnClickListener{
+            currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlAlphabetical, bottomSheetBinding.tvAlphabetical, bottomSheetBinding.ivAlphabetical, "Alphabetical")
+            setFromShowBottomDialogSheet()
+            previousSortingLayout = currentSortingLayout
+        }
+        bottomSheetBinding.rlCreator.setOnClickListener{
+            currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlCreator, bottomSheetBinding.tvCreator, bottomSheetBinding.ivCreator, "Creator")
+            setFromShowBottomDialogSheet()
+            previousSortingLayout = currentSortingLayout
+        }
+        bottomSheetBinding.rlRecentlyAdded.setOnClickListener{
+            currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlRecentlyAdded, bottomSheetBinding.tvRecentlyAdded, bottomSheetBinding.ivRecentlyAdded, "Recently Added")
+            setFromShowBottomDialogSheet()
+            previousSortingLayout = currentSortingLayout
+        }
+        bottomSheetBinding.rlRecentlyPlayed.setOnClickListener{
+            currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlRecentlyPlayed, bottomSheetBinding.tvRecentlyPlayed, bottomSheetBinding.ivRecentlyPlayed, "Recently Played")
+            setFromShowBottomDialogSheet()
+            previousSortingLayout = currentSortingLayout
         }
         bottomSheetBinding.tvCancle.setOnClickListener{
             bottomDialogSheet.dismiss()
+            setFromShowBottomDialogSheet()
+            previousSortingLayout = currentSortingLayout
         }
         bottomDialogSheet.show()
+    }
+
+    fun setFromShowBottomDialogSheet(){
+        previousSortingLayout.imageView.visibility = View.INVISIBLE
+        previousSortingLayout.textView.setTextColor(resources.getColor(R.color.white))
+
+        currentSortingLayout.imageView.visibility = View.VISIBLE
+        currentSortingLayout.textView.setTextColor(resources.getColor(R.color.secondary))
+        binding.tvSortText.text = currentSortingLayout.textvalue
+
     }
 
     fun listOfLibraryContent(){

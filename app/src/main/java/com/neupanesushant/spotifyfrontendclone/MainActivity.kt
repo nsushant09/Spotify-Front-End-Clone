@@ -18,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import com.neupanesushant.spotifyfrontendclone.R
 import com.neupanesushant.spotifyfrontendclone.databinding.ActivityMainBinding
+import com.neupanesushant.spotifyfrontendclone.databinding.LibraryBottomDialogSheetBinding
 import com.neupanesushant.spotifyfrontendclone.fragments.HomeFragment
 import com.neupanesushant.spotifyfrontendclone.fragments.LibraryFragment
 import com.neupanesushant.spotifyfrontendclone.fragments.PremiumFragment
@@ -29,12 +30,15 @@ class MainActivity : AppCompatActivity() {
     private val libraryFragment = LibraryFragment();
     private val premiumFragment = PremiumFragment();
     private val searchFragment = SearchFragment();
+    private lateinit var bottomSheetBinding : LibraryBottomDialogSheetBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        bottomSheetBinding = LibraryBottomDialogSheetBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         loadDefaultFragment()
+        setCurrentSortingLayout()
 
         val navigationBarView: NavigationBarView = findViewById(R.id.bottom_navigation)
         currentFragmentListener(navigationBarView)
@@ -42,12 +46,22 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun setCurrentSortingLayout(){
+        libraryFragment.currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlMostRecent, bottomSheetBinding.tvMostRecent, bottomSheetBinding.ivMostRecent, "Most Recent")
+        libraryFragment.previousSortingLayout = libraryFragment.currentSortingLayout
+    }
+
     fun replaceFragment(fragment: Fragment) {
         if (fragment != null) {
             val fragmentTransaction = supportFragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fragment_container, fragment)
+            fragmentTransaction.isAddToBackStackAllowed
+//            fragmentTransaction.setReorderingAllowed(true)
+            fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         }
+    }
+    fun something(){
     }
 
     fun currentFragmentListener(navigationBarView: NavigationBarView) {
