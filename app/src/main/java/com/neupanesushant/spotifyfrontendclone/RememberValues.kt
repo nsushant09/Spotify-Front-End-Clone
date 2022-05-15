@@ -4,9 +4,10 @@ import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.neupanesushant.spotifyfrontendclone.data.DataLibraryContent
 import com.neupanesushant.spotifyfrontendclone.fragments.LibraryFragment
 
 
 
-data class LibrarySortSetting(val relativeLayout: RelativeLayout, val textView: TextView, val imageView : ImageView, val textvalue : String)
+data class LibrarySortSetting(val relativeLayout: RelativeLayout, val textView: TextView, val imageView : ImageView, val textvalue : String, val dataList : ArrayList<DataLibraryContent>)
 

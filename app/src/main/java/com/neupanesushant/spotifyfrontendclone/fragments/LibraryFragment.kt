@@ -2,6 +2,8 @@ package com.neupanesushant.spotifyfrontendclone.fragments
 
 
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +20,9 @@ import com.neupanesushant.spotifyfrontendclone.data.DataLibraryContent
 import com.neupanesushant.spotifyfrontendclone.databinding.FragmentLibraryBinding
 import com.neupanesushant.spotifyfrontendclone.databinding.LibraryBottomDialogSheetBinding
 import com.squareup.picasso.Picasso
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.properties.Delegates
 
 
 class LibraryFragment : Fragment() {
@@ -25,13 +30,15 @@ class LibraryFragment : Fragment() {
     private var _binding: FragmentLibraryBinding? = null
     private val binding get() = _binding!!
 
-    private var isList : Boolean = true
+
+
     private lateinit var bottomSheetBinding : LibraryBottomDialogSheetBinding
     private lateinit var bottomDialogSheet : BottomSheetDialog
-    private val dataLibraryContentList = ArrayList<DataLibraryContent>()
 
+    val dataLibraryContentList = ArrayList<DataLibraryContent>()
     lateinit var currentSortingLayout : LibrarySortSetting
     lateinit var previousSortingLayout : LibrarySortSetting
+    private var isList = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,10 +53,12 @@ class LibraryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         listOfLibraryContent()
-        setHeaderProfileImage("https://lh3.googleusercontent.com/UrNljYq0p0PAZovQLACI6N4ExZ68Vp52OgVo1XpHsjl1fqFrAnliSgxWoKQDnB0w60cbH39HS0x2oLTTPAr7WNc80NT2P1NIAqS1v_KVo4svCs0jpc74RakjJbV8oX35lY0dUzxn4qYZ7sJIeU7rRBeNHNctrXpgSoF2RbG-aZ1BiPl95Nvdis1221svrOXjk_n-fK7plebUNjggr6W7j9bhc-JgOMuhaTyasnSeye7sr8oDxxbv_9WHFCWvGE7Go6ZUrakt5dr9RGoVd-h4xdEVcKVYIX1Q6QfPcvkyiwTWSUjbtdEZbcC7QJbDryzjScGsfmACcZTdtK8Bzw8PB8MOKtBVuTfi1x0i7Klixjxqot6yeME5yeBtHtvEulK0XY62RIfONlvo-mbH99Xi_DG_XXTB5Mbb-D6fLqD7KeCPvQGgIwFkC1vxZ-76UCuZxdT_FZ3kXTZniA__D9JQWu2rzhpIv7kGn4xUF71JHwpG8VmA8pQ-h4_E0os3W3GnaNWsIO4n2CGGUGOqrsl3Do1a1ME10ShXrTFJxIbYtbbBIpuRBO2g56ZUIntNqPZLXapUCwiKtb54EWPSnaw0IOSz5PtWMhgS6v7lEZIvQSuUB8JabBdV0rOEwLBzTc0QrQ8vaGBiiDMSBagqoRuo_4ih4NeCyrn7LMJfDNKgmKkNQpJsoVHamjfSxj-34F7ZLbH4W92mwqOYPFLyRM3-usXHEb7E1lW4_btRiIbms2vsNT1LbsvcuUA=w165-h220-no?authuser=0")
+        setHeaderProfileImage("https://lh3.googleusercontent.com/Jwp7SwoCA-Eoh1m99PpbpA58GbmgbCU-JPZbF_lJnfyxv9jQIA0aiHMFbizvLP3gc9i207bZ5qwvd82i6cnHXxZHM3zdKO1BpXX6RR6uEpylst1TjjTTR-VykpJ-2na4S829lpDW3LOkVyKo1mIPbI1j1-1dFNBcdmWZ60zaZWbkbMEVFskCkQsT4eqba0lSB_zDimrGPf5i3cN_i4kMwH3JgSK84xgPW2tCn5iwq4fYHkbD3ppyFOtCZacUAOcfeUMdKC8Ny9SIRW7XfSJAlHJmPKHruhI32i_JLZY4mxOd9UtbfoELMh4AlUO0iAec-hIpDpb3vY38KFHDhAu54qC5vJG0pi8I0F6Mw52z2nFnS3TWfr3qXj4SkIz1UzrSZHLtlgdSPdXSvRcRUOyxZk2nvaG4-gj_AbUjoFWExwYYWJmAg127IjL8Pnuf8-nZkyyewjAeY9bVRAPLSjnF-KEPfRUpRjSqzuiyIznziD_8IjHKD0QugpYtrgdflrmO2rKBeaqy3mjw35lOj1UWzM3X-MVGkIUqoTarFW-uaduIilyM1c31GH8M1Qh6F5nCGittYP2nVJZC9Gtjp79ie4NWZTnVmDd1dgp_JpZO4wzuOodbYs0H__9kMDqKNjwOyaBJhjY3sdTYvLTPdSZ1mqq8N2iIURpJcDmUJVuPkm0QhTOtOoNkU5oCZHjpPXyz8IFWcgc0-fl1xDBwYTrWbd9k31REHW7S-Lh9ToX3LqPXL1hIbCd3=w165-h220-no?authuser=0")
         changeListViewListener()
         sortingOrderClickListener()
-        setFromShowBottomDialogSheet()
+
+        setRecyclerViewAtStart(isList)
+        setBottomDialogSheetAppearanceAtStart(currentSortingLayout.textvalue)
     }
 
     fun setHeaderProfileImage(uri: String) {
@@ -79,22 +88,28 @@ class LibraryFragment : Fragment() {
                 androidx.appcompat.R.anim.abc_fade_in,
             ))
             if(isList){
-                binding.rvLibraryContents.startAnimation(AnimationUtils.loadAnimation(
-                    requireContext(),
-                    androidx.appcompat.R.anim.abc_grow_fade_in_from_bottom
-                ))
                 setupTwoElementRecyclerView(dataLibraryContentList)
             }else{
-                binding.rvLibraryContents.startAnimation(AnimationUtils.loadAnimation(
-                    requireContext(),
-                    androidx.appcompat.R.anim.abc_slide_in_bottom
-                ))
                 setupOneElementRecyclerView(dataLibraryContentList)
             }
         }
     }
 
+    fun setRecyclerViewWithSortedList(list : ArrayList<DataLibraryContent>){
+        if(isList){
+            setupOneElementRecyclerView(list)
+        }else{
+            setupTwoElementRecyclerView(list)
+        }
+    }
+
     fun setupOneElementRecyclerView(list : ArrayList<DataLibraryContent>){
+
+        binding.rvLibraryContents.startAnimation(AnimationUtils.loadAnimation(
+            requireContext(),
+            androidx.appcompat.R.anim.abc_slide_in_bottom
+        ))
+
         val adapter = LibraryContentAdapter(true, list)
         binding.rvLibraryContents.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvLibraryContents.adapter = adapter
@@ -104,6 +119,12 @@ class LibraryFragment : Fragment() {
     }
 
     fun setupTwoElementRecyclerView(list : ArrayList<DataLibraryContent>){
+
+        binding.rvLibraryContents.startAnimation(AnimationUtils.loadAnimation(
+            requireContext(),
+            androidx.appcompat.R.anim.abc_grow_fade_in_from_bottom
+        ))
+
         val adapter = LibraryContentAdapter(false, list)
         binding.rvLibraryContents.layoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
         binding.rvLibraryContents.adapter = adapter
@@ -119,51 +140,122 @@ class LibraryFragment : Fragment() {
 
     fun showBottomDialogSheet(){
         bottomDialogSheet.setContentView(bottomSheetBinding.root)
-
         bottomSheetBinding.rlMostRecent.setOnClickListener{
-            currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlMostRecent, bottomSheetBinding.tvMostRecent, bottomSheetBinding.ivMostRecent, "Most Recent")
-            setFromShowBottomDialogSheet()
-            previousSortingLayout = currentSortingLayout
+            rlMostRecentClickAction()
         }
         bottomSheetBinding.rlAlphabetical.setOnClickListener{
-            currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlAlphabetical, bottomSheetBinding.tvAlphabetical, bottomSheetBinding.ivAlphabetical, "Alphabetical")
-            setFromShowBottomDialogSheet()
-            previousSortingLayout = currentSortingLayout
+            rlAlphabeticalClickAction()
         }
         bottomSheetBinding.rlCreator.setOnClickListener{
-            currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlCreator, bottomSheetBinding.tvCreator, bottomSheetBinding.ivCreator, "Creator")
-            setFromShowBottomDialogSheet()
-            previousSortingLayout = currentSortingLayout
+            rlCreatorClickAction()
         }
         bottomSheetBinding.rlRecentlyAdded.setOnClickListener{
-            currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlRecentlyAdded, bottomSheetBinding.tvRecentlyAdded, bottomSheetBinding.ivRecentlyAdded, "Recently Added")
-            setFromShowBottomDialogSheet()
-            previousSortingLayout = currentSortingLayout
+            rlRecentlyAddedClickAction()
         }
         bottomSheetBinding.rlRecentlyPlayed.setOnClickListener{
-            currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlRecentlyPlayed, bottomSheetBinding.tvRecentlyPlayed, bottomSheetBinding.ivRecentlyPlayed, "Recently Played")
-            setFromShowBottomDialogSheet()
-            previousSortingLayout = currentSortingLayout
+            rlRecentlyPlayedClickAction()
+
         }
         bottomSheetBinding.tvCancle.setOnClickListener{
             bottomDialogSheet.dismiss()
-            setFromShowBottomDialogSheet()
-            previousSortingLayout = currentSortingLayout
         }
+
         bottomDialogSheet.show()
     }
 
     fun setFromShowBottomDialogSheet(){
         previousSortingLayout.imageView.visibility = View.INVISIBLE
         previousSortingLayout.textView.setTextColor(resources.getColor(R.color.white))
-
         currentSortingLayout.imageView.visibility = View.VISIBLE
         currentSortingLayout.textView.setTextColor(resources.getColor(R.color.secondary))
         binding.tvSortText.text = currentSortingLayout.textvalue
+    }
 
+    fun rlMostRecentClickAction(){
+        currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlMostRecent, bottomSheetBinding.tvMostRecent, bottomSheetBinding.ivMostRecent, "Most Recent", dataLibraryContentList)
+        setFromShowBottomDialogSheet()
+        previousSortingLayout = currentSortingLayout
+        setRecyclerViewWithSortedList(dataLibraryContentList)
+    }
+    fun rlAlphabeticalClickAction(){
+        currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlAlphabetical, bottomSheetBinding.tvAlphabetical, bottomSheetBinding.ivAlphabetical, "Alphabetical", sortLibraryContentWithTitle())
+        setFromShowBottomDialogSheet()
+        previousSortingLayout = currentSortingLayout
+        setRecyclerViewWithSortedList(sortLibraryContentWithTitle())
+    }
+    fun rlCreatorClickAction(){
+        currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlCreator, bottomSheetBinding.tvCreator, bottomSheetBinding.ivCreator, "Creator", sortLibraryContentWithCreator())
+        setFromShowBottomDialogSheet()
+        previousSortingLayout = currentSortingLayout
+        setRecyclerViewWithSortedList(sortLibraryContentWithCreator())
+    }
+    fun rlRecentlyAddedClickAction(){
+        currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlRecentlyAdded, bottomSheetBinding.tvRecentlyAdded, bottomSheetBinding.ivRecentlyAdded, "Recently Added", sortLibraryContentWithRecentlyAdded())
+        setFromShowBottomDialogSheet()
+        previousSortingLayout = currentSortingLayout
+    }
+    fun rlRecentlyPlayedClickAction(){
+        currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlRecentlyPlayed, bottomSheetBinding.tvRecentlyPlayed, bottomSheetBinding.ivRecentlyPlayed, "Recently Played", sortLibraryContentWithRecentlyPlayed())
+        setFromShowBottomDialogSheet()
+        previousSortingLayout = currentSortingLayout
+    }
+
+    fun setBottomDialogSheetAppearanceAtStart(string : String){
+        when(string){
+            "Most Recent" -> rlMostRecentClickAction()
+            "Alphabetical" -> rlAlphabeticalClickAction()
+            "Creator" -> rlCreatorClickAction()
+            "Recently Played" -> rlRecentlyPlayedClickAction()
+            "Recently Added" -> rlRecentlyAddedClickAction()
+        }
+    }
+
+    fun setRecyclerViewAtStart(isList : Boolean ){
+        if(isList){
+            setupOneElementRecyclerView(currentSortingLayout.dataList)
+        }else{
+            setupTwoElementRecyclerView(currentSortingLayout.dataList)
+        }
+    }
+    fun sortLibraryContentWithTitle() : ArrayList<DataLibraryContent> {
+        val tempList = dataLibraryContentList
+        for(i in 0 until tempList.size - 1){
+            for (j in i until tempList.size){
+                if(tempList[i].title.compareTo(tempList[j].title) >= 0){
+                    val temp = tempList[i]
+                    tempList[i] = tempList[j]
+                    tempList[j] = temp
+                }
+            }
+        }
+        return tempList
+    }
+
+    fun sortLibraryContentWithCreator() : ArrayList<DataLibraryContent>{
+        val tempList = dataLibraryContentList
+        for(i in 0 until tempList.size - 1){
+            for(j in i until tempList.size){
+                if(tempList[i].artistName[0].compareTo(tempList[j].artistName[0]) >= 0 ){
+                    val temp = tempList[i]
+                    tempList[i] = tempList[j]
+                    tempList[j] = temp
+                }
+            }
+        }
+        return tempList
+    }
+
+    fun sortLibraryContentWithRecentlyPlayed() : ArrayList<DataLibraryContent>{
+        val tempList = dataLibraryContentList
+        return tempList
+    }
+    fun sortLibraryContentWithRecentlyAdded() : ArrayList<DataLibraryContent>{
+        val tempList = dataLibraryContentList
+        return tempList
     }
 
     fun listOfLibraryContent(){
+        dataLibraryContentList.clear()
         dataLibraryContentList.apply {
             add(
                 DataLibraryContent(

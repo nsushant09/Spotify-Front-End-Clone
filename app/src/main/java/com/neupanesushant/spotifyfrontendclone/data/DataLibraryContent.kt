@@ -6,7 +6,7 @@ data class DataLibraryContent(
     val isPlaylist: Boolean,
     val artistName: Array<String>
 
-) {
+){
 
     var description: String = setDescription()
     fun setDescription(): String {
@@ -22,4 +22,5 @@ data class DataLibraryContent(
         }
         return tempDesc
     }
+
 }

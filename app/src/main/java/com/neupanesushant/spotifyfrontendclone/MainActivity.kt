@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Build.VERSION_CODES.KITKAT
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import androidx.fragment.app.Fragment
@@ -47,9 +48,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setCurrentSortingLayout(){
-        libraryFragment.currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlMostRecent, bottomSheetBinding.tvMostRecent, bottomSheetBinding.ivMostRecent, "Most Recent")
+        libraryFragment.currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlMostRecent, bottomSheetBinding.tvMostRecent, bottomSheetBinding.ivMostRecent, "Most Recent", libraryFragment.dataLibraryContentList)
         libraryFragment.previousSortingLayout = libraryFragment.currentSortingLayout
     }
+
 
     fun replaceFragment(fragment: Fragment) {
         if (fragment != null) {
@@ -60,8 +62,6 @@ class MainActivity : AppCompatActivity() {
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         }
-    }
-    fun something(){
     }
 
     fun currentFragmentListener(navigationBarView: NavigationBarView) {

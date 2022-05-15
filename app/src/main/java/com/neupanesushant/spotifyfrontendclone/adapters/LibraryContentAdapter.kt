@@ -3,6 +3,7 @@ package com.neupanesushant.spotifyfrontendclone.adapters
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.neupanesushant.spotifyfrontendclone.data.DataLibraryContent
+import java.util.ArrayList
 
 class LibraryContentAdapter(private val isOneElement : Boolean = false, private val list : ArrayList<DataLibraryContent>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
