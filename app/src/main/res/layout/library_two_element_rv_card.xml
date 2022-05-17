@@ -40,7 +40,10 @@
         android:layout_height="16dp"
         android:text="PlayList . Sushant Neupane"
         android:textSize="12sp"
-        android:textColor="@color/grey" />
+        android:textColor="@color/grey"
+        android:maxLines="1"
+        android:ellipsize="end"
+        />
 
 
 </LinearLayout>
