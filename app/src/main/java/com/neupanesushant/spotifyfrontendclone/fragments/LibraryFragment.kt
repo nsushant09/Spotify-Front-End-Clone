@@ -302,6 +302,15 @@ class LibraryFragment : Fragment() {
                 )
             )
 
+            add(
+                DataLibraryContent(
+                    "https://images.pexels.com/photos/2104882/pexels-photo-2104882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "Nepali Songs",
+                    true,
+                    arrayOf("Bimal Ranabhat")
+                )
+            )
+
         }
 
         }
