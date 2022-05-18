@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         loadDefaultFragment()
         setCurrentSortingLayout()
+        listOfLibraryContent()
 
         val navigationBarView: NavigationBarView = findViewById(R.id.bottom_navigation)
         currentFragmentListener(navigationBarView)
@@ -63,7 +64,10 @@ class MainActivity : AppCompatActivity() {
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         }
+
     }
+
+
 
     fun currentFragmentListener(navigationBarView: NavigationBarView) {
         navigationBarView.setOnItemSelectedListener {

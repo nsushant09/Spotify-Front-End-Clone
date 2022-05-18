@@ -1,6 +1,7 @@
 package com.neupanesushant.spotifyfrontendclone.fragments
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -39,6 +40,7 @@ class LibraryFragment : Fragment() {
     lateinit var currentSortingLayout : LibrarySortSetting
     lateinit var previousSortingLayout : LibrarySortSetting
     private var isList = false
+    lateinit var adapter : LibraryContentAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,7 +54,8 @@ class LibraryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        listOfLibraryContent()
+//        listOfLibraryContent()
+
         setHeaderProfileImage("https://lh3.googleusercontent.com/Jwp7SwoCA-Eoh1m99PpbpA58GbmgbCU-JPZbF_lJnfyxv9jQIA0aiHMFbizvLP3gc9i207bZ5qwvd82i6cnHXxZHM3zdKO1BpXX6RR6uEpylst1TjjTTR-VykpJ-2na4S829lpDW3LOkVyKo1mIPbI1j1-1dFNBcdmWZ60zaZWbkbMEVFskCkQsT4eqba0lSB_zDimrGPf5i3cN_i4kMwH3JgSK84xgPW2tCn5iwq4fYHkbD3ppyFOtCZacUAOcfeUMdKC8Ny9SIRW7XfSJAlHJmPKHruhI32i_JLZY4mxOd9UtbfoELMh4AlUO0iAec-hIpDpb3vY38KFHDhAu54qC5vJG0pi8I0F6Mw52z2nFnS3TWfr3qXj4SkIz1UzrSZHLtlgdSPdXSvRcRUOyxZk2nvaG4-gj_AbUjoFWExwYYWJmAg127IjL8Pnuf8-nZkyyewjAeY9bVRAPLSjnF-KEPfRUpRjSqzuiyIznziD_8IjHKD0QugpYtrgdflrmO2rKBeaqy3mjw35lOj1UWzM3X-MVGkIUqoTarFW-uaduIilyM1c31GH8M1Qh6F5nCGittYP2nVJZC9Gtjp79ie4NWZTnVmDd1dgp_JpZO4wzuOodbYs0H__9kMDqKNjwOyaBJhjY3sdTYvLTPdSZ1mqq8N2iIURpJcDmUJVuPkm0QhTOtOoNkU5oCZHjpPXyz8IFWcgc0-fl1xDBwYTrWbd9k31REHW7S-Lh9ToX3LqPXL1hIbCd3=w165-h220-no?authuser=0")
         setHeaderAddClickListener()
         changeListViewListener()
@@ -61,6 +64,13 @@ class LibraryFragment : Fragment() {
         setRecyclerViewAtStart(isList)
         setBottomDialogSheetAppearanceAtStart(currentSortingLayout.textvalue)
     }
+
+
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
+    }
+
 
     fun setHeaderProfileImage(uri: String) {
         Picasso.get().load(uri).fit().centerCrop()
@@ -77,6 +87,7 @@ class LibraryFragment : Fragment() {
         binding.ivAddLibraryItems.setOnClickListener{
             val intent = Intent(requireContext(), LibraryAddActivity::class.java)
             startActivity(intent)
+
         }
     }
 
@@ -107,6 +118,7 @@ class LibraryFragment : Fragment() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setupOneElementRecyclerView(list : ArrayList<DataLibraryContent>){
 
         binding.rvLibraryContents.startAnimation(AnimationUtils.loadAnimation(
@@ -114,14 +126,15 @@ class LibraryFragment : Fragment() {
             androidx.appcompat.R.anim.abc_slide_in_bottom
         ))
 
-        val adapter = LibraryContentAdapter(true, list)
+        adapter = LibraryContentAdapter(true, list)
         binding.rvLibraryContents.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvLibraryContents.adapter = adapter
-
+        adapter.notifyDataSetChanged()
         isList = true
         binding.ivChangeListView.setImageResource(R.drawable.ic_grid_view)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setupTwoElementRecyclerView(list : ArrayList<DataLibraryContent>){
 
         binding.rvLibraryContents.startAnimation(AnimationUtils.loadAnimation(
@@ -129,9 +142,10 @@ class LibraryFragment : Fragment() {
             androidx.appcompat.R.anim.abc_grow_fade_in_from_bottom
         ))
 
-        val adapter = LibraryContentAdapter(false, list)
+        adapter = LibraryContentAdapter(false, list)
         binding.rvLibraryContents.layoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
         binding.rvLibraryContents.adapter = adapter
+        adapter.notifyDataSetChanged()
         isList = false
         binding.ivChangeListView.setImageResource(R.drawable.ic_bullet_list)
     }

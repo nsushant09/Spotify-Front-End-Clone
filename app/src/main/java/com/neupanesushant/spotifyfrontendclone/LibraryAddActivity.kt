@@ -1,5 +1,6 @@
 package com.neupanesushant.spotifyfrontendclone
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.addTextChangedListener
@@ -11,6 +12,7 @@ class LibraryAddActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLibraryAddBinding
     private var libraryFragment = LibraryFragment()
+    private var mainActivity = MainActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLibraryAddBinding.inflate(layoutInflater)
@@ -33,20 +35,22 @@ class LibraryAddActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun actionTextClickListener(){
         binding.tvAction.setOnClickListener {
             val imageString = ""
             val isPlaylist = true
             val artist = arrayOf("UserName")
             val title : String
-            if(binding.tvAction.text.length == 0){
-                val playlistNumber = libraryFragment.getLibraryContentListSize() + 1
-                title = "My Playlist #$playlistNumber"
-            }else{
+            if(binding.etPlaylistNameInput.text.length != 0){
                 title = binding.etPlaylistNameInput.text.toString()
+            }else{
+                val playlistNumber = dataLibraryContentList.size + 1
+                title = "My Playlist #$playlistNumber"
             }
-            libraryFragment.addElementToLibraryContentList(DataLibraryContent(imageString, title, isPlaylist, artist))
+            dataLibraryContentList.add(DataLibraryContent(imageString, title, isPlaylist, artist))
             finish()
+
         }
     }
 
