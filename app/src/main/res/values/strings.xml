@@ -26,4 +26,5 @@
     <string name="creator">Creator</string>
     <string name="alphabetical">Alphabetical</string>
     <string name="cancle">cancle</string>
+    <string name="addPlaylistTitle">Give your playlist a name.</string>
 </resources>

@@ -17,7 +17,11 @@ class LibraryTwoElementViewHolder(val binding: LibraryTwoElementRvCardBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item : DataLibraryContent, position: Int) {
-        Picasso.get().load(item.imageString).fit().centerCrop().into(binding.ivLibraryContentImage)
+        if(item.imageString.isEmpty()){
+            binding.ivLibraryContentImage.setImageResource(R.drawable.default_card_background)
+        }else{
+            Picasso.get().load(item.imageString).fit().centerCrop().placeholder(R.drawable.default_card_background).error(R.drawable.default_card_background).into(binding.ivLibraryContentImage)
+        }
         binding.tvContentTitle.text = item.title
         binding.tvContentDesc.text = item.description
         if(!item.isPlaylist){

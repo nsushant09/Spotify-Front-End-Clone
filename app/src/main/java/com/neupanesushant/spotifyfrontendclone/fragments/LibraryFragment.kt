@@ -1,6 +1,7 @@
 package com.neupanesushant.spotifyfrontendclone.fragments
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.util.Log
@@ -35,7 +36,6 @@ class LibraryFragment : Fragment() {
     private lateinit var bottomSheetBinding : LibraryBottomDialogSheetBinding
     private lateinit var bottomDialogSheet : BottomSheetDialog
 
-    val dataLibraryContentList = ArrayList<DataLibraryContent>()
     lateinit var currentSortingLayout : LibrarySortSetting
     lateinit var previousSortingLayout : LibrarySortSetting
     private var isList = false
@@ -54,6 +54,7 @@ class LibraryFragment : Fragment() {
 
         listOfLibraryContent()
         setHeaderProfileImage("https://lh3.googleusercontent.com/Jwp7SwoCA-Eoh1m99PpbpA58GbmgbCU-JPZbF_lJnfyxv9jQIA0aiHMFbizvLP3gc9i207bZ5qwvd82i6cnHXxZHM3zdKO1BpXX6RR6uEpylst1TjjTTR-VykpJ-2na4S829lpDW3LOkVyKo1mIPbI1j1-1dFNBcdmWZ60zaZWbkbMEVFskCkQsT4eqba0lSB_zDimrGPf5i3cN_i4kMwH3JgSK84xgPW2tCn5iwq4fYHkbD3ppyFOtCZacUAOcfeUMdKC8Ny9SIRW7XfSJAlHJmPKHruhI32i_JLZY4mxOd9UtbfoELMh4AlUO0iAec-hIpDpb3vY38KFHDhAu54qC5vJG0pi8I0F6Mw52z2nFnS3TWfr3qXj4SkIz1UzrSZHLtlgdSPdXSvRcRUOyxZk2nvaG4-gj_AbUjoFWExwYYWJmAg127IjL8Pnuf8-nZkyyewjAeY9bVRAPLSjnF-KEPfRUpRjSqzuiyIznziD_8IjHKD0QugpYtrgdflrmO2rKBeaqy3mjw35lOj1UWzM3X-MVGkIUqoTarFW-uaduIilyM1c31GH8M1Qh6F5nCGittYP2nVJZC9Gtjp79ie4NWZTnVmDd1dgp_JpZO4wzuOodbYs0H__9kMDqKNjwOyaBJhjY3sdTYvLTPdSZ1mqq8N2iIURpJcDmUJVuPkm0QhTOtOoNkU5oCZHjpPXyz8IFWcgc0-fl1xDBwYTrWbd9k31REHW7S-Lh9ToX3LqPXL1hIbCd3=w165-h220-no?authuser=0")
+        setHeaderAddClickListener()
         changeListViewListener()
         sortingOrderClickListener()
 
@@ -73,7 +74,10 @@ class LibraryFragment : Fragment() {
     }
 
     fun setHeaderAddClickListener() {
-
+        binding.ivAddLibraryItems.setOnClickListener{
+            val intent = Intent(requireContext(), LibraryAddActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun setHeaderSearchClickListener() {
@@ -254,6 +258,13 @@ class LibraryFragment : Fragment() {
         return tempList
     }
 
+    fun getLibraryContentListSize() : Int{
+        return dataLibraryContentList.size
+    }
+    fun addElementToLibraryContentList(element : DataLibraryContent) {
+        dataLibraryContentList.add(element)
+    }
+
     fun listOfLibraryContent(){
         dataLibraryContentList.clear()
         dataLibraryContentList.apply {
@@ -308,6 +319,15 @@ class LibraryFragment : Fragment() {
                     "Nepali Songs",
                     true,
                     arrayOf("Bimal Ranabhat")
+                )
+            )
+
+            add(
+                DataLibraryContent(
+                    "",
+                    "Empty",
+                    true,
+                    arrayOf("Empty")
                 )
             )
 

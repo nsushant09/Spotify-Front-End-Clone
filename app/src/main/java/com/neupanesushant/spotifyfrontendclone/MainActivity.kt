@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private val premiumFragment = PremiumFragment();
     private val searchFragment = SearchFragment();
     private lateinit var bottomSheetBinding : LibraryBottomDialogSheetBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setCurrentSortingLayout(){
-        libraryFragment.currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlMostRecent, bottomSheetBinding.tvMostRecent, bottomSheetBinding.ivMostRecent, "Most Recent", libraryFragment.dataLibraryContentList)
+        libraryFragment.currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlMostRecent, bottomSheetBinding.tvMostRecent, bottomSheetBinding.ivMostRecent, "Most Recent", dataLibraryContentList)
         libraryFragment.previousSortingLayout = libraryFragment.currentSortingLayout
     }
 
