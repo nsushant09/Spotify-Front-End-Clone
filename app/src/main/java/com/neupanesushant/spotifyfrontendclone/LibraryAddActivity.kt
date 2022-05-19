@@ -1,8 +1,10 @@
 package com.neupanesushant.spotifyfrontendclone
 
 import android.annotation.SuppressLint
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.core.widget.addTextChangedListener
 import com.neupanesushant.spotifyfrontendclone.data.DataLibraryContent
 import com.neupanesushant.spotifyfrontendclone.databinding.ActivityLibraryAddBinding
@@ -11,8 +13,6 @@ import com.neupanesushant.spotifyfrontendclone.fragments.LibraryFragment
 class LibraryAddActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLibraryAddBinding
-    private var libraryFragment = LibraryFragment()
-    private var mainActivity = MainActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLibraryAddBinding.inflate(layoutInflater)
@@ -20,7 +20,7 @@ class LibraryAddActivity : AppCompatActivity() {
         setActionText()
         actionTextClickListener()
         cancleClickListener()
-
+       binding.etPlaylistNameInput.requestFocus()
 
     }
 
