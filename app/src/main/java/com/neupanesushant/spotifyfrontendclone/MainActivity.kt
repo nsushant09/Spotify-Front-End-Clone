@@ -60,7 +60,10 @@ class MainActivity : AppCompatActivity() {
     fun replaceFragment(fragment: Fragment) {
         if (fragment != null) {
             val fragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.setCustomAnimations(androidx.appcompat.R.anim.abc_grow_fade_in_from_bottom, androidx.appcompat.R.anim.abc_shrink_fade_out_from_bottom)
+            fragmentTransaction.setCustomAnimations(
+                androidx.transition.R.anim.abc_grow_fade_in_from_bottom,
+                androidx.transition.R.anim.abc_shrink_fade_out_from_bottom
+            )
             fragmentTransaction.replace(R.id.fragment_container, fragment)
             fragmentTransaction.isAddToBackStackAllowed
 //            fragmentTransaction.setReorderingAllowed(true)
