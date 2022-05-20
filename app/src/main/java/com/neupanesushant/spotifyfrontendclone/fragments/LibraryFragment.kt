@@ -4,14 +4,11 @@ package com.neupanesushant.spotifyfrontendclone.fragments
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,13 +21,13 @@ import com.neupanesushant.spotifyfrontendclone.databinding.LibraryBottomDialogSh
 import com.squareup.picasso.Picasso
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.properties.Delegates
 
 
 class LibraryFragment : Fragment() {
 
     private var _binding: FragmentLibraryBinding? = null
     private val binding get() = _binding!!
+    private val librarySearchFragment = LibrarySearchFragment()
 
 
 
@@ -63,8 +60,9 @@ class LibraryFragment : Fragment() {
 
         setRecyclerViewAtStart(isList)
         setBottomDialogSheetAppearanceAtStart(currentSortingLayout.textvalue)
-    }
+        replaceFragmentToLibrarySearch()
 
+    }
 
     override fun onResume() {
         super.onResume()
@@ -235,6 +233,17 @@ class LibraryFragment : Fragment() {
             setupTwoElementRecyclerView(currentSortingLayout.dataList)
         }
     }
+
+    private fun replaceFragmentToLibrarySearch() {
+        binding.ivSearchLibraryItems.setOnClickListener{
+            val fragmentTransaction = parentFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, librarySearchFragment)
+            fragmentTransaction.isAddToBackStackAllowed
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
+    }
+
     fun sortLibraryContentWithTitle() : ArrayList<DataLibraryContent> {
         val tempList = dataLibraryContentList
         for(i in 0 until tempList.size - 1){
