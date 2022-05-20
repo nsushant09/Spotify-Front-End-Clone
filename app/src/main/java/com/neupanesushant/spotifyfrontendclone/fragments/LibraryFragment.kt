@@ -242,6 +242,7 @@ class LibraryFragment : Fragment() {
             fragmentTransaction.isAddToBackStackAllowed
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
+
         }
     }
 
