@@ -27,4 +27,6 @@
     <string name="alphabetical">Alphabetical</string>
     <string name="cancle">cancle</string>
     <string name="addPlaylistTitle">Give your playlist a name.</string>
+    <string name="back_image_works_as_button">Back Image Works as Button</string>
+    <string name="search_your_library">Search Your Library</string>
 </resources>

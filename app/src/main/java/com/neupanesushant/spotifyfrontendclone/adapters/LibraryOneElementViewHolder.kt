@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 class LibraryOneElementViewHolder(val binding: LibraryOneElementRvCardBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item : DataLibraryContent, position : Int) {
+    fun bind(item : DataLibraryContent) {
         if(item.imageString.isEmpty()){
             binding.ivLibraryContentImage.setImageResource(R.drawable.default_card_background)
         }else{

@@ -16,7 +16,7 @@ import java.text.FieldPosition
 class LibraryTwoElementViewHolder(val binding: LibraryTwoElementRvCardBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item : DataLibraryContent, position: Int) {
+    fun bind(item : DataLibraryContent) {
         if(item.imageString.isEmpty()){
             binding.ivLibraryContentImage.setImageResource(R.drawable.default_card_background)
         }else{

@@ -2,13 +2,17 @@ package com.neupanesushant.spotifyfrontendclone.fragments
 
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.view.inputmethod.InputMethodManager
+import androidx.annotation.RequiresApi
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -237,7 +241,7 @@ class LibraryFragment : Fragment() {
     private fun replaceFragmentToLibrarySearch() {
         binding.ivSearchLibraryItems.setOnClickListener{
             val fragmentTransaction = parentFragmentManager.beginTransaction()
-            fragmentTransaction.setCustomAnimations(androidx.appcompat.R.anim.abc_slide_in_top, androidx.appcompat.R.anim.abc_slide_out_bottom)
+            fragmentTransaction.setCustomAnimations(R.anim.slide_in_row, androidx.appcompat.R.anim.abc_fade_out)
             fragmentTransaction.replace(R.id.fragment_container, librarySearchFragment)
             fragmentTransaction.isAddToBackStackAllowed
             fragmentTransaction.addToBackStack(null)
@@ -290,73 +294,7 @@ class LibraryFragment : Fragment() {
         dataLibraryContentList.add(element)
     }
 
-    fun listOfLibraryContent(){
-        dataLibraryContentList.clear()
-        dataLibraryContentList.apply {
-            add(
-                DataLibraryContent(
-                    "https://images.pexels.com/photos/9821104/pexels-photo-9821104.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-                    "Dhoti ko geet",
-                    false,
-                    arrayOf("Sushant Neupane")
-                )
-            )
 
-            add(
-                DataLibraryContent(
-                    "https://images.pexels.com/photos/11642205/pexels-photo-11642205.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-                    "Playlist 1",
-                    true,
-                    arrayOf("Yogesh Bhatta")
-                )
-            )
 
-            add(
-                DataLibraryContent(
-                    "https://images.pexels.com/photos/167092/pexels-photo-167092.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-                    "Music",
-                    true,
-                    arrayOf("Utsab Sapkota", "Yogesh Bhatta")
-                )
-            )
 
-            add(
-                DataLibraryContent(
-                    "https://images.pexels.com/photos/191240/pexels-photo-191240.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-                    "Piano Vibes",
-                    true,
-                    arrayOf("Sushant Neupane")
-                )
-            )
-
-            add(
-                DataLibraryContent(
-                    "https://images.pexels.com/photos/352505/pexels-photo-352505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-                    "Talk Your Life",
-                    false,
-                    arrayOf("Cristiano Ronaldo", "Lionel Messi")
-                )
-            )
-
-            add(
-                DataLibraryContent(
-                    "https://images.pexels.com/photos/2104882/pexels-photo-2104882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-                    "Nepali Songs",
-                    true,
-                    arrayOf("Bimal Ranabhat")
-                )
-            )
-
-            add(
-                DataLibraryContent(
-                    "",
-                    "Empty",
-                    true,
-                    arrayOf("Empty")
-                )
-            )
-
-        }
-
-        }
     }

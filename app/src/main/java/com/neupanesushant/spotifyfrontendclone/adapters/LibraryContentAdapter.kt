@@ -16,10 +16,10 @@ class LibraryContentAdapter(private val isOneElement : Boolean = false, private 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is LibraryOneElementViewHolder -> {
-                holder.bind(list.get(position), position)
+                holder.bind(list.get(position))
             }
             is LibraryTwoElementViewHolder -> {
-                holder.bind(list.get(position), position)
+                holder.bind(list.get(position))
             }
 
         }

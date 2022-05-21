@@ -1,9 +1,11 @@
 package com.neupanesushant.spotifyfrontendclone
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.RequiresApi
 import androidx.core.widget.addTextChangedListener
 import com.neupanesushant.spotifyfrontendclone.data.DataLibraryContent
@@ -59,4 +61,5 @@ class LibraryAddActivity : AppCompatActivity() {
             finish()
         }
     }
+
 }

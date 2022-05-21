@@ -1,14 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".library_search_fragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.LibrarySearchFragment"
+    android:background="@color/primary">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/linearLayoutLibrarySearchFragmentHeader"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="85dp"
+        android:background="@color/primary"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/ivBackButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white"
+            android:padding="4dp"
+            android:contentDescription="@string/back_image_works_as_button"
+            />
+
+        <EditText
+            android:id="@+id/etSearchInput"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="@drawable/search_field_background_library_search_fragment"
+            android:layout_marginStart="8dp"
+            android:hint="@string/search_your_library"
+            android:paddingHorizontal="8dp"
+            style="@style/SmallTextWithNunito"
+            android:textSize="13sp"
+            android:maxLines="1"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:fitsSystemWindows="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="@color/grey"
+            android:textCursorDrawable="@color/grey"
+            android:cursorVisible="true"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutLibrarySearchFragmentHeader" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFoundLibraryContents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutTextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        app:layout_constraintVertical_bias="0.425"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/tvTextInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            style="@style/HeaderTextWithGothamBold"
+            />
+        <TextView
+            android:id="@+id/tvInputTextInvalid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp"
+            style="@style/HeaderTextWithSourceSansSemiBold"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSearchInputDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutTextBox"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/grey"
+        style="@style/SmallTextWithNunito"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
