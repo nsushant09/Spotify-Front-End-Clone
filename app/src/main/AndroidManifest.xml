@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.neupanesushant.spotifyfrontendclone">
+    package="com.neupanesushant.spotifyfrontendclone" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,17 +10,18 @@
         android:label="Spotify Clone"
         android:roundIcon="@drawable/ic_spotify_colored"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SpotifyFrontEndClone">
+        android:theme="@style/Theme.SpotifyFrontEndClone" >
         <activity
-            android:name=".LibraryAddActivity"
+            android:name=".activities.LibraryContentOptionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.LibraryAddActivity"
             android:exported="false"
-            android:windowSoftInputMode="stateVisible|adjustResize"
-            />
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
-            >
+            android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

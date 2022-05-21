@@ -1,17 +1,24 @@
 package com.neupanesushant.spotifyfrontendclone.adapters
 
+import android.content.Context
+import android.content.Intent
 import android.text.Layout
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.neupanesushant.spotifyfrontendclone.R
+import com.neupanesushant.spotifyfrontendclone.activities.LibraryAddActivity
+import com.neupanesushant.spotifyfrontendclone.activities.LibraryContentOptionsActivity
 import com.neupanesushant.spotifyfrontendclone.data.DataLibraryContent
 import com.neupanesushant.spotifyfrontendclone.databinding.LibraryOneElementRvCardBinding
 import com.neupanesushant.spotifyfrontendclone.databinding.LibraryTwoElementRvCardBinding
 import com.squareup.picasso.Picasso
 
 class LibraryOneElementViewHolder(val binding: LibraryOneElementRvCardBinding) :
-    RecyclerView.ViewHolder(binding.root) {
+    RecyclerView.ViewHolder(binding.root){
 
     fun bind(item : DataLibraryContent) {
         if(item.imageString.isEmpty()){
@@ -24,6 +31,7 @@ class LibraryOneElementViewHolder(val binding: LibraryOneElementRvCardBinding) :
         if(!item.isPlaylist){
             binding.cvLibraryContentImageCard.setBackgroundResource(R.drawable.default_card_background)
         }
+
     }
 
     companion object {
@@ -33,4 +41,12 @@ class LibraryOneElementViewHolder(val binding: LibraryOneElementRvCardBinding) :
             return LibraryOneElementViewHolder(binding)
         }
     }
+
+
 }
+
+
+
+
+
+

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/library_add_activity_background"
-    tools:context=".LibraryAddActivity">
+    tools:context=".activities.LibraryAddActivity">
 
     <TextView
         android:id="@+id/tvContentTitle"

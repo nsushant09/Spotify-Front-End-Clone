@@ -1,6 +1,7 @@
 package com.neupanesushant.spotifyfrontendclone.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,6 +15,8 @@ import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.neupanesushant.spotifyfrontendclone.MainActivity
 import com.neupanesushant.spotifyfrontendclone.R
+import com.neupanesushant.spotifyfrontendclone.activities.LibraryAddActivity
+import com.neupanesushant.spotifyfrontendclone.activities.LibraryContentOptionsActivity
 import com.neupanesushant.spotifyfrontendclone.adapters.LibraryContentAdapter
 import com.neupanesushant.spotifyfrontendclone.data.DataLibraryContent
 import com.neupanesushant.spotifyfrontendclone.dataLibraryContentList
@@ -25,6 +28,13 @@ class LibrarySearchFragment : Fragment() {
     private var _binding: FragmentLibrarySearchFragmentBinding? = null
     private val binding get() = _binding!!
     val foundSearchItemslist = ArrayList<DataLibraryContent>()
+
+    val onLongClick : (DataLibraryContent) -> Boolean = { dataLibraryContent ->
+        val intent = Intent(context, LibraryContentOptionsActivity::class.java)
+        startActivity(intent)
+        true
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -117,7 +127,7 @@ class LibrarySearchFragment : Fragment() {
                         isRecyclerAnimationOnce = true
                     }
                     binding.rvFoundLibraryContents.visibility = View.VISIBLE
-                    val adapter = LibraryContentAdapter(true, foundSearchItemslist)
+                    val adapter = LibraryContentAdapter(requireContext(),onLongClick,true, foundSearchItemslist)
                     binding.rvFoundLibraryContents.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                     binding.rvFoundLibraryContents.adapter = adapter
 
