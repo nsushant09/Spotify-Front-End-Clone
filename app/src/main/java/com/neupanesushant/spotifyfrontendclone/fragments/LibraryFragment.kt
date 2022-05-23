@@ -77,9 +77,6 @@ class LibraryFragment : Fragment() {
         adapter.notifyDataSetChanged()
     }
 
-    fun itemLongClickListener() {
-
-    }
 
     fun setHeaderProfileImage(uri: String) {
         Picasso.get().load(uri).fit().centerCrop()

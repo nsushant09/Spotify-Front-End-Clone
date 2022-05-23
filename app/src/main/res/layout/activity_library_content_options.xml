@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,16 +7,194 @@
     tools:context=".activities.LibraryContentOptionsActivity"
     android:id="@+id/linearLayoutContentOptionsPage"
     android:orientation="vertical"
-    android:background="@color/primary"
-    >
+    android:background="@color/black">
 
-    <TextView
-        android:id="@+id/tvSomething"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:id="@+id/linearlayoutContentOptionsPageDetails"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:text="Hello"
-        android:textColor="@color/white"
-        />
-</LinearLayout>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/linearLayoutContentOptionsPageBottomSheet"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:id="@+id/ivContentImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@mipmap/ic_launcher"
+                    />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:src="@drawable/spotify_music_code"/>
+
+            </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvContentTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="4dp"
+            style="@style/MediumTextWithGothamBold"
+            android:textSize="14sp"
+            />
+
+        <TextView
+            android:id="@+id/tvContentCreator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/HeaderTextWithSourceSansSemiBold"
+            android:textColor="@color/grey"
+            android:layout_marginTop="2dp"
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutContentOptionsPageBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="vertical"
+        android:paddingVertical="16dp"
+        >
+
+        <RelativeLayout
+            android:id="@+id/rlProfileVisibiltiy"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <ImageView
+                android:id="@+id/ivProfileVisibility"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:padding="4dp"
+                android:contentDescription="@string/image_for_profile_visibility"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:src="@drawable/ic_lock"
+                app:tint="@color/grey"
+                />
+
+            <TextView
+                android:id="@+id/tvProfileVisibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ivProfileVisibility"
+                android:layout_marginStart="8dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                style="@style/MediumTextWithGothamBold"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlPlaylistPinned"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <ImageView
+                android:id="@+id/ivPlaylistPinned"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:contentDescription="@string/image_for_profile_visibility"
+                android:padding="3dp"
+                android:src="@drawable/ic_pin"
+                />
+
+            <TextView
+                android:id="@+id/tvPlaylistPinned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ivPlaylistPinned"
+                android:layout_marginStart="8dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                style="@style/MediumTextWithGothamBold"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlDeletePlaylist"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <ImageView
+                android:id="@+id/ivDeletePlaylist"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:contentDescription="@string/image_for_profile_visibility"
+                android:padding="6dp"
+                android:src="@drawable/ic_cross"
+                app:tint="@color/grey" />
+
+            <TextView
+                android:id="@+id/tvDeletePlaylist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ivDeletePlaylist"
+                android:layout_marginStart="8dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                style="@style/MediumTextWithGothamBold"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlShare"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <ImageView
+                android:id="@+id/ivShare"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:padding="4dp"
+                android:contentDescription="@string/image_for_profile_visibility"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:src="@drawable/ic_share_svgrepo_com"
+                app:tint="@color/grey"
+                />
+
+            <TextView
+                android:id="@+id/tvShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ivShare"
+                android:layout_marginStart="8dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                style="@style/MediumTextWithGothamBold"
+                />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,4 +29,5 @@
     <string name="addPlaylistTitle">Give your playlist a name.</string>
     <string name="back_image_works_as_button">Back Image Works as Button</string>
     <string name="search_your_library">Search Your Library</string>
+    <string name="image_for_profile_visibility">Image for profile visibility</string>
 </resources>

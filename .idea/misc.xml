@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_pin_green.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/bottom_navigation_background.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/bottom_navigation_item_text_appearance.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/card_background_gradient_green.xml" value="0.285" />
@@ -16,6 +17,7 @@
         <entry key="app/src/main/res/drawable/ic_library.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/ic_library_selected.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/ic_library_selector.xml" value="0.285" />
+        <entry key="app/src/main/res/drawable/ic_pin.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/ic_search_selector.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/ic_spotify.xml" value="0.2155" />
         <entry key="app/src/main/res/drawable/ic_spotify_colored.xml" value="0.285" />
@@ -27,6 +29,7 @@
         <entry key="app/src/main/res/drawable/premium_button_background.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/premium_offer_card_background.xml" value="0.242" />
         <entry key="app/src/main/res/drawable/search_field_background_library_search_fragment.xml" value="0.285" />
+        <entry key="app/src/main/res/drawable/spotify_music_code.xml" value="0.1855" />
         <entry key="app/src/main/res/drawable/spotify_premium_image_with_dark_overlay.xml" value="0.285" />
         <entry key="app/src/main/res/drawable/why_premium_rv_card.xml" value="0.285" />
         <entry key="app/src/main/res/layout-v23/fragment_premium.xml" value="0.3494791666666667" />
