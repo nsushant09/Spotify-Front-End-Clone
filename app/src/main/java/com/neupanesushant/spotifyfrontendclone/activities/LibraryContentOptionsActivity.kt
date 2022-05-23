@@ -124,7 +124,7 @@ class LibraryContentOptionsActivity : AppCompatActivity() {
     fun shareClickListener(){
         binding.rlShare.setOnClickListener{
             // need to send link of the playlist insted an image is sent for now.
-            if(indexOfObject != 1){
+            if(indexOfObject != -1){
                 val intent = Intent(Intent.ACTION_SEND).setType("image/*")
                 val bitmap = binding.ivContentImage.drawable.toBitmap()
                 val bytes = ByteArrayOutputStream()

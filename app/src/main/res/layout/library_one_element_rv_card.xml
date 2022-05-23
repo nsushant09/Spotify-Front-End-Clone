@@ -38,6 +38,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Dhoti ko geet"
+            android:transitionName="contentTitleLibraryTransition"
             android:fontFamily="@font/source_sans"
             android:textColor="@color/white"
             android:paddingVertical="2dp"

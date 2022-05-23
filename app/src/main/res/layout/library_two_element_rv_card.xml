@@ -29,6 +29,7 @@
         android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="1"
+        android:transitionName="contentTitleLibraryTransition"
         android:fontFamily="@font/source_sans"
         android:textColor="@color/white"
         android:textSize="14sp" />
