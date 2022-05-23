@@ -29,6 +29,7 @@
                 <ImageView
                     android:id="@+id/ivContentImage"
                     android:layout_width="match_parent"
+                    android:transitionName="contentImageLibrary"
                     android:layout_height="150dp"
                     android:src="@mipmap/ic_launcher"
                     />

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.neupanesushant.spotifyfrontendclone.R
 import com.neupanesushant.spotifyfrontendclone.activities.LibraryAddActivity
@@ -18,7 +19,7 @@ import com.neupanesushant.spotifyfrontendclone.databinding.ActivityLibraryConten
 import kotlinx.coroutines.NonDisposableHandle.parent
 import java.util.ArrayList
 
-class LibraryContentAdapter(private val context : Context, private val onLongClick: (DataLibraryContent) -> Boolean,private val isOneElement : Boolean = false, private val list : ArrayList<DataLibraryContent>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class LibraryContentAdapter(private val context : Context, private val onLongClick: (DataLibraryContent, ImageView) -> Boolean, private val isOneElement : Boolean = false, private val list : ArrayList<DataLibraryContent>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     lateinit var handler : Handler
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if(isOneElement)
@@ -30,17 +31,17 @@ class LibraryContentAdapter(private val context : Context, private val onLongCli
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is LibraryOneElementViewHolder -> {
-                holder.bind(list.get(position))
+                holder.bind(list.get(position), onLongClick)
             }
             is LibraryTwoElementViewHolder -> {
-                holder.bind(list.get(position))
+                holder.bind(list.get(position), onLongClick)
             }
         }
 
-        holder.itemView.setOnLongClickListener {
-            clickedLibraryObject = list.get(position)
-            onLongClick(list.get(position))
-        }
+//        holder.itemView.setOnLongClickListener {
+//            clickedLibraryObject = list.get(position)
+//            onLongClick(list.get(position))
+//        }
     }
 
     override fun getItemCount(): Int {

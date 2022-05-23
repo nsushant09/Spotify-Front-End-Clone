@@ -10,7 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.neupanesushant.spotifyfrontendclone.MainActivity
@@ -29,12 +31,12 @@ class LibrarySearchFragment : Fragment() {
     private val binding get() = _binding!!
     val foundSearchItemslist = ArrayList<DataLibraryContent>()
 
-    val onLongClick : (DataLibraryContent) -> Boolean = { dataLibraryContent ->
+    val onLongClick : (DataLibraryContent, ImageView) -> Boolean = { dataLibraryContent, imageView ->
         val intent = Intent(context, LibraryContentOptionsActivity::class.java)
-        startActivity(intent)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(requireActivity(), imageView, "contentImageLibrary")
+        startActivity(intent, options.toBundle())
         true
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

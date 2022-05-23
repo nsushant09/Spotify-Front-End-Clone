@@ -9,6 +9,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/transparent_primary</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowContentTransitions">true</item>
         <item name="android:textColor">@color/primary</item>
         <item name="background">@color/white</item>
     </style>

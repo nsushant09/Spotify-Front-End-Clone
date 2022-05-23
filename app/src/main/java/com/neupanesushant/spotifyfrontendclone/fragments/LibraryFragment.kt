@@ -10,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
+import androidx.core.app.ActivityOptionsCompat
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,9 +42,10 @@ class LibraryFragment : Fragment() {
     private var isList = false
     lateinit var adapter: LibraryContentAdapter
 
-    val onLongClick : (DataLibraryContent) -> Boolean = { dataLibraryContent ->
+    val onLongClick : (DataLibraryContent, ImageView) -> Boolean = { dataLibraryContent, imageView ->
         val intent = Intent(context, LibraryContentOptionsActivity::class.java)
-        startActivity(intent)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(requireActivity(), imageView, "contentImageLibrary")
+        startActivity(intent, options.toBundle())
         true
     }
     override fun onCreateView(

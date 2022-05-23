@@ -35,13 +35,11 @@ class LibraryContentOptionsActivity : AppCompatActivity() {
         playlistPinnedClickListener()
         deleteClickListener()
         shareClickListener()
-        binding.linearlayoutContentOptionsPageDetails.startAnimation(AnimationUtils.loadAnimation(applicationContext, androidx.appcompat.R.anim.abc_slide_in_top))
         binding.linearLayoutContentOptionsPageBottomSheet.startAnimation(AnimationUtils.loadAnimation(applicationContext,androidx.transition.R.anim.abc_slide_in_bottom))
     }
 
     fun setValuesInUI(){
         var text : String
-
         if(clickedLibraryObject.imageString.isEmpty()){
             binding.ivContentImage.setImageResource(R.drawable.card_background_gradient_green)
         }else{
