@@ -108,6 +108,7 @@ class LibraryContentOptionsActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(applicationContext, "Error Occured", Toast.LENGTH_SHORT).show()
             }
+
             finish()
         }
     }
