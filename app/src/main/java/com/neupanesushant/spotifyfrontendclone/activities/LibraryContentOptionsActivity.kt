@@ -28,7 +28,7 @@ class LibraryContentOptionsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.linearLayoutContentOptionsPage.setOnClickListener{
-            finish()
+            supportFinishAfterTransition()
         }
         setValuesInUI()
         profileVisibilityClickListener()
@@ -95,7 +95,7 @@ class LibraryContentOptionsActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(applicationContext, "Error Occured", Toast.LENGTH_SHORT).show()
             }
-            finish()
+            supportFinishAfterTransition()
         }
     }
 
@@ -106,7 +106,7 @@ class LibraryContentOptionsActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(applicationContext, "Error Occured", Toast.LENGTH_SHORT).show()
             }
-            finish()
+            supportFinishAfterTransition()
         }
     }
 
@@ -117,7 +117,7 @@ class LibraryContentOptionsActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(applicationContext, "Error Occured", Toast.LENGTH_SHORT).show()
             }
-            finish()
+            supportFinishAfterTransition()
         }
     }
 
