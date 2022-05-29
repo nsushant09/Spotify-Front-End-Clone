@@ -32,6 +32,7 @@ class LibraryFragment : Fragment() {
     private var _binding: FragmentLibraryBinding? = null
     private val binding get() = _binding!!
     private val librarySearchFragment = LibrarySearchFragment()
+    private val libraryContentDetailsFragment = LibraryContentDetailsFragment()
 
 
     private lateinit var bottomSheetBinding: LibraryBottomDialogSheetBinding
@@ -295,6 +296,21 @@ class LibraryFragment : Fragment() {
                 androidx.appcompat.R.anim.abc_fade_out
             )
             fragmentTransaction.replace(R.id.fragment_container, librarySearchFragment)
+            fragmentTransaction.isAddToBackStackAllowed
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+
+        }
+    }
+
+    private fun replaceFragmentToLibraryContentDetails() {
+        binding.ivSearchLibraryItems.setOnClickListener {
+            val fragmentTransaction = parentFragmentManager.beginTransaction()
+            fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in_row,
+                androidx.appcompat.R.anim.abc_fade_out
+            )
+            fragmentTransaction.replace(R.id.fragment_container,libraryContentDetailsFragment)
             fragmentTransaction.isAddToBackStackAllowed
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
