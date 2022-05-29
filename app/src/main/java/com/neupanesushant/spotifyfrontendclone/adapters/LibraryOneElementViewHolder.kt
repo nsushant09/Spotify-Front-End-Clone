@@ -24,7 +24,7 @@ import com.squareup.picasso.Picasso
 class LibraryOneElementViewHolder(val binding: LibraryOneElementRvCardBinding) :
     RecyclerView.ViewHolder(binding.root){
 
-    fun bind(item : DataLibraryContent, onLongClick: (DataLibraryContent, ImageView) -> Boolean) {
+    fun bind(item : DataLibraryContent, onLongClick: (DataLibraryContent, ImageView) -> Boolean, onClick : (DataLibraryContent, ImageView) -> Unit ) {
         if(item.imageString.isEmpty()){
             binding.ivLibraryContentImage.setImageResource(R.drawable.default_card_background)
         }else{
@@ -38,6 +38,10 @@ class LibraryOneElementViewHolder(val binding: LibraryOneElementRvCardBinding) :
         itemView.setOnLongClickListener {
             clickedLibraryObject = item
             onLongClick(item, binding.ivLibraryContentImage)
+        }
+        itemView.setOnClickListener{
+            clickedLibraryObject = item
+            onClick(item, binding.ivLibraryContentImage)
         }
     }
 

@@ -30,12 +30,25 @@ class LibrarySearchFragment : Fragment() {
     private var _binding: FragmentLibrarySearchFragmentBinding? = null
     private val binding get() = _binding!!
     val foundSearchItemslist = ArrayList<DataLibraryContent>()
+    private val libraryContentDetailsFragment = LibraryContentDetailsFragment()
 
     val onLongClick : (DataLibraryContent, ImageView) -> Boolean = { dataLibraryContent, imageView ->
         val intent = Intent(context, LibraryContentOptionsActivity::class.java)
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(requireActivity(), imageView, "contentImageLibrary")
         startActivity(intent, options.toBundle())
         true
+    }
+    val onClick : (DataLibraryContent, ImageView) -> Unit = {dataLibraryContent, imageView ->
+        val fragmentTransaction = parentFragmentManager.beginTransaction()
+        fragmentTransaction.setCustomAnimations(
+            R.anim.slide_in_row,
+            androidx.appcompat.R.anim.abc_fade_out
+        )
+        fragmentTransaction.addSharedElement(imageView, "contentImageLibrary")
+        fragmentTransaction.replace(R.id.fragment_container,libraryContentDetailsFragment)
+        fragmentTransaction.isAddToBackStackAllowed
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -129,7 +142,7 @@ class LibrarySearchFragment : Fragment() {
                         isRecyclerAnimationOnce = true
                     }
                     binding.rvFoundLibraryContents.visibility = View.VISIBLE
-                    val adapter = LibraryContentAdapter(requireContext(),onLongClick,true, foundSearchItemslist)
+                    val adapter = LibraryContentAdapter(requireContext(),onLongClick,onClick,true, foundSearchItemslist)
                     binding.rvFoundLibraryContents.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                     binding.rvFoundLibraryContents.adapter = adapter
 

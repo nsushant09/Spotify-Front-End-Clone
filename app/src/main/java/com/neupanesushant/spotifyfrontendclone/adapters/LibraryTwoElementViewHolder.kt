@@ -1,5 +1,6 @@
 package com.neupanesushant.spotifyfrontendclone.adapters
 
+import android.provider.ContactsContract
 import android.text.Layout
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,7 +19,7 @@ import java.text.FieldPosition
 class LibraryTwoElementViewHolder(val binding: LibraryTwoElementRvCardBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item : DataLibraryContent, onLongClick : (DataLibraryContent, ImageView) -> Boolean ) {
+    fun bind(item : DataLibraryContent, onLongClick : (DataLibraryContent, ImageView) -> Boolean, onClick : (DataLibraryContent, ImageView) -> Unit ) {
         if(item.imageString.isEmpty()){
             binding.ivLibraryContentImage.setImageResource(R.drawable.default_card_background)
         }else{
@@ -32,6 +33,10 @@ class LibraryTwoElementViewHolder(val binding: LibraryTwoElementRvCardBinding) :
         itemView.setOnLongClickListener {
             clickedLibraryObject = item
             onLongClick(item, binding.ivLibraryContentImage)
+        }
+        itemView.setOnClickListener{
+            clickedLibraryObject = item
+            onClick(item, binding.ivLibraryContentImage)
         }
     }
 

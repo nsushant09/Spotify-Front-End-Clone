@@ -19,7 +19,7 @@ import com.neupanesushant.spotifyfrontendclone.databinding.ActivityLibraryConten
 import kotlinx.coroutines.NonDisposableHandle.parent
 import java.util.ArrayList
 
-class LibraryContentAdapter(private val context : Context, private val onLongClick: (DataLibraryContent, ImageView) -> Boolean, private val isOneElement : Boolean = false, private val list : ArrayList<DataLibraryContent>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class LibraryContentAdapter(private val context : Context, private val onLongClick: (DataLibraryContent, ImageView) -> Boolean,private val onClick : (DataLibraryContent, ImageView) -> Unit,  private val isOneElement : Boolean = false, private val list : ArrayList<DataLibraryContent>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     lateinit var handler : Handler
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if(isOneElement)
@@ -31,10 +31,10 @@ class LibraryContentAdapter(private val context : Context, private val onLongCli
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is LibraryOneElementViewHolder -> {
-                holder.bind(list.get(position), onLongClick)
+                holder.bind(list.get(position), onLongClick, onClick)
             }
             is LibraryTwoElementViewHolder -> {
-                holder.bind(list.get(position), onLongClick)
+                holder.bind(list.get(position), onLongClick, onClick)
             }
         }
 

@@ -49,6 +49,16 @@ class LibraryFragment : Fragment() {
         startActivity(intent, options.toBundle())
         true
     }
+
+    val onClick : (DataLibraryContent, ImageView) -> Unit = {dataLibraryContent, imageView ->
+        val fragmentTransaction = parentFragmentManager.beginTransaction()
+        fragmentTransaction.addSharedElement(imageView, "contentImageLibrary")
+        fragmentTransaction.replace(R.id.fragment_container,libraryContentDetailsFragment)
+        fragmentTransaction.isAddToBackStackAllowed
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -72,8 +82,6 @@ class LibraryFragment : Fragment() {
         setRecyclerViewAtStart(isList)
         setBottomDialogSheetAppearanceAtStart(currentSortingLayout.textvalue)
         replaceFragmentToLibrarySearch()
-
-
     }
 
     override fun onResume() {
@@ -140,7 +148,7 @@ class LibraryFragment : Fragment() {
             )
         )
 
-        adapter = LibraryContentAdapter(requireContext(), onLongClick, true, list)
+        adapter = LibraryContentAdapter(requireContext(), onLongClick, onClick, true, list)
         binding.rvLibraryContents.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvLibraryContents.adapter = adapter
@@ -159,7 +167,7 @@ class LibraryFragment : Fragment() {
             )
         )
 
-        adapter = LibraryContentAdapter(requireContext(), onLongClick, false, list)
+        adapter = LibraryContentAdapter(requireContext(), onLongClick, onClick, false, list)
         binding.rvLibraryContents.layoutManager =
             GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
         binding.rvLibraryContents.adapter = adapter
@@ -303,20 +311,6 @@ class LibraryFragment : Fragment() {
         }
     }
 
-    private fun replaceFragmentToLibraryContentDetails() {
-        binding.ivSearchLibraryItems.setOnClickListener {
-            val fragmentTransaction = parentFragmentManager.beginTransaction()
-            fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in_row,
-                androidx.appcompat.R.anim.abc_fade_out
-            )
-            fragmentTransaction.replace(R.id.fragment_container,libraryContentDetailsFragment)
-            fragmentTransaction.isAddToBackStackAllowed
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-
-        }
-    }
 
     fun sortLibraryContentWithTitle(): ArrayList<DataLibraryContent> {
         val tempList = dataLibraryContentList

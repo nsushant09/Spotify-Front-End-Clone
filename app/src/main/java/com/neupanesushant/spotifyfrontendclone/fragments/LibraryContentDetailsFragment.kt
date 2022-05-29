@@ -1,12 +1,16 @@
 package com.neupanesushant.spotifyfrontendclone.fragments
 
 import android.os.Bundle
+import android.transition.Transition
+import android.transition.TransitionInflater
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.neupanesushant.spotifyfrontendclone.R
+import com.neupanesushant.spotifyfrontendclone.clickedLibraryObject
 import com.neupanesushant.spotifyfrontendclone.databinding.FragmentLibraryContentDetailsBinding
+import com.squareup.picasso.Picasso
 
 class LibraryContentDetailsFragment : Fragment() {
 
@@ -24,6 +28,15 @@ class LibraryContentDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setContentImage()
 
+    }
+
+    fun setContentImage(){
+        if(clickedLibraryObject.imageString.isEmpty()){
+            binding.ivContentImage.setImageResource(R.drawable.card_background_gradient_green)
+        }else{
+            Picasso.get().load(clickedLibraryObject.imageString).centerCrop().fit().placeholder(R.drawable.default_card_background).error(R.drawable.bottom_navigation_background).into(binding.ivContentImage)
+        }
     }
 }
