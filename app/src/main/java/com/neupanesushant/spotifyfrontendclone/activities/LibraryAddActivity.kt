@@ -10,7 +10,7 @@ import com.neupanesushant.spotifyfrontendclone.databinding.ActivityLibraryAddBin
 
 class LibraryAddActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityLibraryAddBinding
+    private lateinit var binding: ActivityLibraryAddBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLibraryAddBinding.inflate(layoutInflater)
@@ -18,31 +18,31 @@ class LibraryAddActivity : AppCompatActivity() {
         setActionText()
         actionTextClickListener()
         cancleClickListener()
-       binding.etPlaylistNameInput.requestFocus()
+        binding.etPlaylistNameInput.requestFocus()
 
     }
 
     fun setActionText() {
         binding.tvAction.text = "SKIP"
         binding.etPlaylistNameInput.addTextChangedListener {
-            if(it==null || it.length == 0){
+            if (it == null || it.length == 0) {
                 binding.tvAction.text = "SKIP"
-            }else{
+            } else {
                 binding.tvAction.text = "CREATE"
             }
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun actionTextClickListener(){
+    fun actionTextClickListener() {
         binding.tvAction.setOnClickListener {
             val imageString = ""
             val isPlaylist = true
             val artist = arrayOf("UserName")
-            val title : String
-            if(binding.etPlaylistNameInput.text.length != 0){
+            val title: String
+            if (binding.etPlaylistNameInput.text.length != 0) {
                 title = binding.etPlaylistNameInput.text.toString()
-            }else{
+            } else {
                 val playlistNumber = dataLibraryContentList.size + 1
                 title = "My Playlist #$playlistNumber"
             }
@@ -52,7 +52,7 @@ class LibraryAddActivity : AppCompatActivity() {
         }
     }
 
-    fun cancleClickListener(){
+    fun cancleClickListener() {
         binding.tvCancle.setOnClickListener {
             finish()
         }

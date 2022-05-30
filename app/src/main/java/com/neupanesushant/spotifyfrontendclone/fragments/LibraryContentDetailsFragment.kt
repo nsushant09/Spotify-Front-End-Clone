@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso
 
 class LibraryContentDetailsFragment : Fragment() {
 
-    private lateinit var _binding : FragmentLibraryContentDetailsBinding
+    private lateinit var _binding: FragmentLibraryContentDetailsBinding
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -35,17 +35,20 @@ class LibraryContentDetailsFragment : Fragment() {
     }
 
 
-    fun setValuesInUI(){
+    fun setValuesInUI() {
 
         binding.btnBack.setOnClickListener(View.OnClickListener {
             parentFragmentManager.popBackStack()
         })
 
-        if(clickedLibraryObject.imageString.isEmpty()){
+        if (clickedLibraryObject.imageString.isEmpty()) {
             binding.ivContentImage.setImageResource(R.drawable.card_background_gradient_green)
-        }else{
-            Picasso.get().load(clickedLibraryObject.imageString).centerCrop().fit().placeholder(R.drawable.default_card_background).error(R.drawable.bottom_navigation_background).into(binding.ivContentImage)
+        } else {
+            Picasso.get().load(clickedLibraryObject.imageString).centerCrop().fit()
+                .placeholder(R.drawable.default_card_background)
+                .error(R.drawable.bottom_navigation_background).into(binding.ivContentImage)
         }
     }
+
 
 }

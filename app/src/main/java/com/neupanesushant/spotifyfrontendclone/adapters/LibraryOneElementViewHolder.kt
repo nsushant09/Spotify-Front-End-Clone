@@ -22,24 +22,30 @@ import com.neupanesushant.spotifyfrontendclone.databinding.LibraryTwoElementRvCa
 import com.squareup.picasso.Picasso
 
 class LibraryOneElementViewHolder(val binding: LibraryOneElementRvCardBinding) :
-    RecyclerView.ViewHolder(binding.root){
+    RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item : DataLibraryContent, onLongClick: (DataLibraryContent, ImageView) -> Boolean, onClick : (DataLibraryContent, ImageView) -> Unit ) {
-        if(item.imageString.isEmpty()){
+    fun bind(
+        item: DataLibraryContent,
+        onLongClick: (DataLibraryContent, ImageView) -> Boolean,
+        onClick: (DataLibraryContent, ImageView) -> Unit
+    ) {
+        if (item.imageString.isEmpty()) {
             binding.ivLibraryContentImage.setImageResource(R.drawable.default_card_background)
-        }else{
-            Picasso.get().load(item.imageString).fit().centerCrop().placeholder(R.drawable.default_card_background).error(R.drawable.default_card_background).into(binding.ivLibraryContentImage)
+        } else {
+            Picasso.get().load(item.imageString).fit().centerCrop()
+                .placeholder(R.drawable.default_card_background)
+                .error(R.drawable.default_card_background).into(binding.ivLibraryContentImage)
         }
         binding.tvContentTitle.text = item.title
         binding.tvContentDesc.text = item.description
-        if(!item.isPlaylist){
+        if (!item.isPlaylist) {
             binding.cvLibraryContentImageCard.setBackgroundResource(R.drawable.default_card_background)
         }
         itemView.setOnLongClickListener {
             clickedLibraryObject = item
             onLongClick(item, binding.ivLibraryContentImage)
         }
-        itemView.setOnClickListener{
+        itemView.setOnClickListener {
             clickedLibraryObject = item
             onClick(item, binding.ivLibraryContentImage)
         }

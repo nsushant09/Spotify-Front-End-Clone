@@ -32,23 +32,28 @@ class LibrarySearchFragment : Fragment() {
     val foundSearchItemslist = ArrayList<DataLibraryContent>()
     private val libraryContentDetailsFragment = LibraryContentDetailsFragment()
 
-    val onLongClick : (DataLibraryContent, ImageView) -> Boolean = { dataLibraryContent, imageView ->
+    val onLongClick: (DataLibraryContent, ImageView) -> Boolean = { dataLibraryContent, imageView ->
         val intent = Intent(context, LibraryContentOptionsActivity::class.java)
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(requireActivity(), imageView, "contentImageLibrary")
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            requireActivity(),
+            imageView,
+            "contentImageLibrary"
+        )
         startActivity(intent, options.toBundle())
         true
     }
-    val onClick : (DataLibraryContent, ImageView) -> Unit = {dataLibraryContent, imageView ->
+    val onClick: (DataLibraryContent, ImageView) -> Unit = { dataLibraryContent, imageView ->
         val fragmentTransaction = parentFragmentManager.beginTransaction()
         fragmentTransaction.setCustomAnimations(
             androidx.appcompat.R.anim.abc_fade_in,
             androidx.appcompat.R.anim.abc_fade_out
         )
-        fragmentTransaction.replace(R.id.fragment_container,libraryContentDetailsFragment)
+        fragmentTransaction.replace(R.id.fragment_container, libraryContentDetailsFragment)
         fragmentTransaction.isAddToBackStackAllowed
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -130,19 +135,31 @@ class LibrarySearchFragment : Fragment() {
                     descText = "Try searching again using a different spelling or keyword."
                     binding.tvSearchInputDescription.text = descText
                     isRecyclerAnimationOnce = false
-                }else{
+                } else {
                     binding.apply {
                         tvTextInfo.visibility = View.GONE
                         tvInputTextInvalid.visibility = View.GONE
                         tvSearchInputDescription.visibility = View.GONE
                     }
-                    if(!isRecyclerAnimationOnce){
-                        binding.rvFoundLibraryContents.startAnimation(AnimationUtils.loadAnimation(requireContext(), androidx.transition.R.anim.abc_grow_fade_in_from_bottom))
+                    if (!isRecyclerAnimationOnce) {
+                        binding.rvFoundLibraryContents.startAnimation(
+                            AnimationUtils.loadAnimation(
+                                requireContext(),
+                                androidx.transition.R.anim.abc_grow_fade_in_from_bottom
+                            )
+                        )
                         isRecyclerAnimationOnce = true
                     }
                     binding.rvFoundLibraryContents.visibility = View.VISIBLE
-                    val adapter = LibraryContentAdapter(requireContext(),onLongClick,onClick,true, foundSearchItemslist)
-                    binding.rvFoundLibraryContents.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                    val adapter = LibraryContentAdapter(
+                        requireContext(),
+                        onLongClick,
+                        onClick,
+                        true,
+                        foundSearchItemslist
+                    )
+                    binding.rvFoundLibraryContents.layoutManager =
+                        LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                     binding.rvFoundLibraryContents.adapter = adapter
 
                 }

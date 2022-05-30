@@ -8,13 +8,15 @@ data class DataLibraryContent(
     val isPlaylist: Boolean,
     val artistName: Array<String>
 
-){
-    var isVisibleInProfile : Boolean
-    var isPinnedInLibrary : Boolean
-    init{
+) {
+    var isVisibleInProfile: Boolean
+    var isPinnedInLibrary: Boolean
+
+    init {
         isVisibleInProfile = true
         isPinnedInLibrary = false
     }
+
     var description: String = setDescription()
     fun setDescription(): String {
         val tempDesc: String
@@ -30,15 +32,16 @@ data class DataLibraryContent(
         return tempDesc
     }
 
-    fun changeIsVisibileInProfile(){
+    fun changeIsVisibileInProfile() {
         isVisibleInProfile = !isVisibleInProfile
     }
-    fun changeIsPinnedInLibrary(){
+
+    fun changeIsPinnedInLibrary() {
         isPinnedInLibrary = !isPinnedInLibrary
     }
 
     override fun equals(other: Any?): Boolean {
-        if(other == null || other !is DataLibraryContent) return false
+        if (other == null || other !is DataLibraryContent) return false
         return this.hashCode() == other.hashCode()
     }
 

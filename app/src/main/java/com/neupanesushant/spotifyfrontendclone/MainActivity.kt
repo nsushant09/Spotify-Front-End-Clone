@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     private val libraryFragment = LibraryFragment();
     private val premiumFragment = PremiumFragment();
     private val searchFragment = SearchFragment();
-    private lateinit var bottomSheetBinding : LibraryBottomDialogSheetBinding
+    private lateinit var bottomSheetBinding: LibraryBottomDialogSheetBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,8 +51,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun setCurrentSortingLayout(){
-        libraryFragment.currentSortingLayout = LibrarySortSetting(bottomSheetBinding.rlMostRecent, bottomSheetBinding.tvMostRecent, bottomSheetBinding.ivMostRecent, "Most Recent", dataLibraryContentList)
+    fun setCurrentSortingLayout() {
+        libraryFragment.currentSortingLayout = LibrarySortSetting(
+            bottomSheetBinding.rlMostRecent,
+            bottomSheetBinding.tvMostRecent,
+            bottomSheetBinding.ivMostRecent,
+            "Most Recent",
+            dataLibraryContentList
+        )
         libraryFragment.previousSortingLayout = libraryFragment.currentSortingLayout
     }
 
@@ -68,7 +74,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
 
 
     fun currentFragmentListener(navigationBarView: NavigationBarView) {
