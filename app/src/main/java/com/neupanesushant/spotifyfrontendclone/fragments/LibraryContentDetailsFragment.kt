@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import com.neupanesushant.spotifyfrontendclone.R
 import com.neupanesushant.spotifyfrontendclone.clickedLibraryObject
 import com.neupanesushant.spotifyfrontendclone.databinding.FragmentLibraryContentDetailsBinding
@@ -28,15 +29,23 @@ class LibraryContentDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setContentImage()
+
+        setValuesInUI()
 
     }
 
-    fun setContentImage(){
+
+    fun setValuesInUI(){
+
+        binding.btnBack.setOnClickListener(View.OnClickListener {
+            parentFragmentManager.popBackStack()
+        })
+
         if(clickedLibraryObject.imageString.isEmpty()){
             binding.ivContentImage.setImageResource(R.drawable.card_background_gradient_green)
         }else{
             Picasso.get().load(clickedLibraryObject.imageString).centerCrop().fit().placeholder(R.drawable.default_card_background).error(R.drawable.bottom_navigation_background).into(binding.ivContentImage)
         }
     }
+
 }

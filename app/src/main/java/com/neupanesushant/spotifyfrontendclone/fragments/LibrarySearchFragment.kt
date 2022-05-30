@@ -41,10 +41,9 @@ class LibrarySearchFragment : Fragment() {
     val onClick : (DataLibraryContent, ImageView) -> Unit = {dataLibraryContent, imageView ->
         val fragmentTransaction = parentFragmentManager.beginTransaction()
         fragmentTransaction.setCustomAnimations(
-            R.anim.slide_in_row,
+            androidx.appcompat.R.anim.abc_fade_in,
             androidx.appcompat.R.anim.abc_fade_out
         )
-        fragmentTransaction.addSharedElement(imageView, "contentImageLibrary")
         fragmentTransaction.replace(R.id.fragment_container,libraryContentDetailsFragment)
         fragmentTransaction.isAddToBackStackAllowed
         fragmentTransaction.addToBackStack(null)

@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.LibraryContentDetailsFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.LibraryContentDetailsFragment"
+    android:background="@color/primary"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:id="@+id/ivContentImage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:transitionName="contentImageLibrary"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/card_background_colorname"
+        >
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:tint="@color/white" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="225dp"
+            android:layout_height="225dp"
+            android:layout_marginTop="32dp"
+            android:layout_centerHorizontal="true"
+            app:cardElevation="500dp"
+            >
+
+            <ImageView
+                android:id="@+id/ivContentImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher" />
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
