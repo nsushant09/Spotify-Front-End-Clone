@@ -9,6 +9,7 @@
     tools:context=".fragments.LibraryContentDetailsFragment">
 
     <RelativeLayout
+        android:id="@+id/relativeLayoutHeader"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:background="@drawable/card_background_colorname"
@@ -117,8 +118,88 @@
                 android:textSize="11sp"
                 android:textColor="@color/grey" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linearLayoutTotalTime"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            >
+
+            <ImageView
+                android:id="@+id/ivAddPerson"
+                android:layout_width="25dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_add_user"
+                app:tint="@color/grey"
+                />
+
+
+            <ImageView
+                android:id="@+id/ivVerticalDots"
+                android:layout_marginStart="16dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_dots_horizontal_triple_svgrepo_com"
+                app:tint="@color/grey" />
 
         </LinearLayout>
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="50dp"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginEnd="16dp"
+
+            >
+
+        </androidx.cardview.widget.CardView>
+
     </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/relativeLayoutHeader"
+        android:layout_marginTop = "-25dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@color/secondary_variant"
+        app:cardCornerRadius="50dp"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:src="@drawable/ic_play_arrow"/>
+
+    </androidx.cardview.widget.CardView>
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="20dp"-->
+<!--        android:layout_height="20dp"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/relativeLayoutHeader"-->
+<!--        android:layout_marginTop = "-25dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        app:cardBackgroundColor="black"-->
+<!--        app:cardCornerRadius="50dp"-->
+<!--        >-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/ic_shuffle"-->
+<!--            android:tint="second"-->
+<!--            />-->
+
+<!--    </androidx.cardview.widget.CardView>-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

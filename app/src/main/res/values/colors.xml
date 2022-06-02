@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#121212</color>
     <color name="secondary">#1db954</color>
+    <color name="secondary_variant">#1fd662</color>
     <color name="transparent_primary">#e6121212</color>
     <color name = "transparent_primary_65">#a6121212</color>
     <color name = "transparent_grey">#33f6feff</color>
