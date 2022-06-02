@@ -6,6 +6,7 @@ data class DataLibraryContent(
     val imageString: String,
     val title: String,
     val isPlaylist: Boolean,
+    val songsList : ArrayList<Song>,
     val artistName: Array<String>
 
 ) {

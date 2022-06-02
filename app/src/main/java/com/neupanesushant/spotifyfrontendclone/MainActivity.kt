@@ -106,6 +106,9 @@ class MainActivity : AppCompatActivity() {
         showTransparentStatusBar()
     }
 
+    fun newFunction(){
+    }
+
     fun showTransparentStatusBar() {
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,

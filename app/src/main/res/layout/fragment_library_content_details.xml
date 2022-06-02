@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.LibraryContentDetailsFragment"
     android:background="@color/primary"
-    >
+    tools:context=".fragments.LibraryContentDetailsFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="400dp"
+        android:background="@drawable/card_background_colorname"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/card_background_colorname"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/btnBack"
@@ -27,12 +26,12 @@
             app:tint="@color/white" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewContentImage"
             android:layout_width="225dp"
             android:layout_height="225dp"
-            android:layout_marginTop="32dp"
             android:layout_centerHorizontal="true"
-            app:cardElevation="500dp"
-            >
+            android:layout_marginTop="32dp"
+            app:cardElevation="500dp">
 
             <ImageView
                 android:id="@+id/ivContentImage"
@@ -41,6 +40,85 @@
                 android:src="@mipmap/ic_launcher" />
 
         </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvPlaylistName"
+            style="@style/MediumTextWithGothamBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardViewContentImage"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutCreatorNameAndInitial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPlaylistName"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewInitialHolder"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:cardBackgroundColor="@color/transparent_grey"
+                app:cardCornerRadius="50dp">
+
+                <TextView
+                    android:id="@+id/tvCreatorInitial"
+                    style="@style/SmallTextWithNunito"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="S" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvCreatorName"
+                style="@style/SmallTextWithNunito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:text="Sushant neupane"
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTotalTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linearLayoutCreatorNameAndInitial"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_web"
+                app:tint="@color/grey" />
+
+
+            <TextView
+                android:id="@+id/tvTotalTime"
+                style="@style/MediumTextWithSourceSansSemiBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:textSize="11sp"
+                android:textColor="@color/grey" />
+
+
+        </LinearLayout>
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

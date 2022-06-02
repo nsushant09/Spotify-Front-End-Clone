@@ -46,7 +46,7 @@ class LibraryAddActivity : AppCompatActivity() {
                 val playlistNumber = dataLibraryContentList.size + 1
                 title = "My Playlist #$playlistNumber"
             }
-            dataLibraryContentList.add(DataLibraryContent(imageString, title, isPlaylist, artist))
+            dataLibraryContentList.add(DataLibraryContent(imageString, title, isPlaylist, arrayListOf(),artist))
             finish()
 
         }
